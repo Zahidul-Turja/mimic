@@ -1,5 +1,5 @@
 function BoundingBox({ children }) {
-  return <div className="px-12 py-8">{children}</div>;
+  return <div className="p-12 text-center">{children}</div>;
 }
 
 export default BoundingBox;

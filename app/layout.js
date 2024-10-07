@@ -9,21 +9,21 @@ const josefin = Josefin_Sans({
 
 export const metadata = {
   title: {
-    template: "Mimic | %s",
-    default: "Mimic | Welcome",
+    template: "%s | Mimic",
+    default: "Welcome | Mimic",
   },
   description:
-    "This page mimics different websites e.g. Pexels, Unsplash and Pixabay etc. using there APIs.",
+    "This page mimics different websites e.g. Pexels, Unsplash and Pixabay etc. using their APIs.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} bg-primary-950 text-primary-100 relative min-h-screen min-w-full antialiased`}
+        className={`${josefin.className} relative min-h-screen min-w-full bg-primary-950 text-primary-100 antialiased`}
       >
         <Header />
-        <main className="w-full">{children}</main>
+        <main className="h-full w-full">{children}</main>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export const categories = [
   {
     name: "Harry Potter World",
     "bg-image": "/harry-potter.jpg",
-    href: "/image-gallery",
+    href: "/harry-potter-world",
     desctiption:
       "Get to know Harry Potter World. All it's characters, spells and more.",
   },
@@ -28,6 +28,6 @@ export const categories = [
     name: "Motivation",
     "bg-image": "/motivation.jpg",
     href: "/image-gallery",
-    desctiption: "Gets motivational quotes for every situation",
+    desctiption: "Get motivational quotes for your current situation",
   },
 ];
