@@ -4,9 +4,7 @@ import axios from "axios";
 export async function getHarryPotterCharacters() {
   const response = await axios
     .get("https://hp-api.onrender.com/api/characters")
-    .then((response) => {
-      return response.data;
-    });
+    .then((response) => response.data);
 
   return response;
 }

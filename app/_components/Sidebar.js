@@ -50,6 +50,15 @@ function Sidebar() {
               <span>Hogwarts Staffs</span>
             </Link>
           </li>
+          <li>
+            <Link
+              href="#"
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/staffs" ? "bg-gray-700" : "border-transparent"}`}
+            >
+              <GrUserWorker className="w-7" />
+              <span>Books</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </aside>
