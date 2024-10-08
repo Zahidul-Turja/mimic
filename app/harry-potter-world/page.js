@@ -1,14 +1,14 @@
 import HarryPotterLayout from "../_components/harry-potter/HarryPotterLayout";
-import AllCharacters from "../_components/harry-potter/AllCharacters";
+import CharacterPage from "../_components/harry-potter/CharacterPage";
 
 export const metadata = {
-  title: "Harry Potter World",
+  title: "Harry Potter Characters",
 };
 
 function Page() {
   return (
     <HarryPotterLayout>
-      <AllCharacters />
+      <CharacterPage />
     </HarryPotterLayout>
   );
 }

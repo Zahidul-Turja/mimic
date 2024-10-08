@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function getHarryPotterCharacters() {
   const response = await axios
-    .get("https://hp-api.onrender.com/api/characters")
+    .get("https://potterapi.onrender.com/en/characters")
     .then((response) => response.data);
 
   return response;
