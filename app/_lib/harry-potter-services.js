@@ -8,3 +8,11 @@ export async function getHarryPotterCharacters() {
 
   return response;
 }
+
+export async function getHarryPotterSpells() {
+  const response = await axios
+    .get("https://potterapi.onrender.com/en/spells")
+    .then((response) => response.data);
+
+  return response;
+}

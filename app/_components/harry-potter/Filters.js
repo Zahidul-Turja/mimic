@@ -6,10 +6,11 @@ function Filters() {
       <input
         type="text"
         name="name"
-        placeholder="Search Character"
-        className="rounded-full border-2 border-gray-500 bg-gray-700/40 px-4 py-2 text-center text-primary-100 outline-none placeholder:font-extralight placeholder:text-primary-100"
+        placeholder="Search"
+        className="rounded-full border border-gray-500 bg-gray-700/10 px-4 py-2 text-center text-primary-100 outline-none placeholder:font-extralight placeholder:text-primary-100"
       />
-      <select
+
+      {/* <select
         name="house"
         className={`rounded border-2 border-primary-100 bg-primary-100 px-4 py-2 text-primary-900 outline-none placeholder:text-primary-100 ${poppins.className}`}
       >
@@ -22,7 +23,7 @@ function Filters() {
         <option value="slytherin">Slytherin</option>
         <option value="hufflepuff">Hufflepuff</option>
         <option value="ravenclaw">Ravenclaw</option>
-      </select>
+      </select> */}
     </div>
   );
 }
