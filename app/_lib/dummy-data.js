@@ -101,7 +101,7 @@ export const houses = [
   {
     house: "Gryffindor",
     emoji: "🦁",
-    image: "/gryffindor.jpg",
+    image: "/harry-potter-world/gryffindor.jpg",
     founder: "Godric Gryffindor",
     colors: ["#5D0205", "#B57E09"],
     animal: "Lion",
@@ -110,7 +110,7 @@ export const houses = [
   {
     house: "Hufflepuff",
     emoji: "🦡",
-    image: "/hufflepuff.jpg",
+    image: "/harry-potter-world/hufflepuff.jpg",
     founder: "Helga Hufflepuff",
     colors: ["#DDB103", "#080808"],
     animal: "Badger",
@@ -119,7 +119,7 @@ export const houses = [
   {
     house: "Ravenclaw",
     emoji: "🦅",
-    image: "/ravenclaw.jpg",
+    image: "/harry-potter-world/ravenclaw.jpg",
     founder: "Rowena Ravenclaw",
     colors: ["#037EA0", "#E0C65D"],
     animal: "Raven",
@@ -128,7 +128,7 @@ export const houses = [
   {
     house: "Slytherin",
     emoji: "🐍",
-    image: "/slytherin.jpg",
+    image: "/harry-potter-world/slytherin.jpg",
     founder: "Salazar Slytherin",
     colors: ["#042D03", "#A1A1A1"],
     animal: "Snake",

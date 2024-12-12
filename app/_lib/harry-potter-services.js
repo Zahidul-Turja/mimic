@@ -16,3 +16,11 @@ export async function getHarryPotterSpells() {
 
   return response;
 }
+
+export async function getHarryPotterHouses() {
+  const response = await axios
+    .get("https://potterapi.onrender.com/en/houses")
+    .then((response) => response.data);
+
+  return response;
+}

@@ -1,5 +1,5 @@
 import HarryPotterLayout from "@/app/_components/harry-potter/HarryPotterLayout";
-import SpellsPage from "@/app/_components/harry-potter/SpellsPage";
+import HousePage from "@/app/_components/harry-potter/HousePage";
 
 export const metadata = {
   title: "Houses",
@@ -8,7 +8,7 @@ export const metadata = {
 function page() {
   return (
     <HarryPotterLayout>
-      <SpellsPage />
+      <HousePage />
     </HarryPotterLayout>
   );
 }
