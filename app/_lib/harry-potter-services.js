@@ -24,3 +24,15 @@ export async function getHarryPotterHouses() {
 
   return response;
 }
+
+export async function getHarryPotterMovies() {
+  const baseUrl = "https://api.potterdb.com/v1";
+
+  const response = await axios
+    .get(`${baseUrl}/movies`)
+    .then((response) => response.data);
+
+  console.log(response.data);
+
+  return response.data;
+}
