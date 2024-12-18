@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function MovieCard({ movie }) {
-  const attributes = movie.attributes;
+function ItemCard({ item, image }) {
+  const attributes = item.attributes;
 
   return (
     <Link
-      href={`/harry-potter-world/movies/${movie.id}`}
+      href={`/harry-potter-world/movies/${item.id}`}
       className="relative h-96 w-64"
     >
       <div className="relative h-full w-auto">
         <Image
-          src={attributes.poster}
+          src={image}
           alt={attributes.title}
           fill
           className="object-cover"
@@ -31,4 +31,4 @@ function MovieCard({ movie }) {
   );
 }
 
-export default MovieCard;
+export default ItemCard;

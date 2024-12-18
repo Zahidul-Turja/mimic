@@ -4,7 +4,7 @@ import { poppins } from "@/app/_utils/fonts/fonts";
 
 import { getHarryPotterMovies } from "@/app/_lib/harry-potter-services";
 import { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import ItemCard from "./ItemCard";
 
 // import { movies } from "@/app/_lib/dummy-data";
 
@@ -36,7 +36,11 @@ function MoviesPage() {
 
       <div className="my-8 grid w-full grid-cols-4 gap-6">
         {movies.map((movie) => (
-          <MovieCard key={movie.index} movie={movie} />
+          <ItemCard
+            key={movie.index}
+            item={movie}
+            image={movie.attributes.poster}
+          />
         ))}
       </div>
     </div>
