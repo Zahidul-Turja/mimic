@@ -47,7 +47,7 @@ export default function Row({
       >
         {house ? house : "Unknown"}
       </div>
-      <div className="flex cursor-pointer items-center font-extralight">
+      <div className="flex cursor-not-allowed items-center font-extralight">
         Details
       </div>
     </li>

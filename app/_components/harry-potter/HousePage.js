@@ -10,7 +10,7 @@ function HousePage() {
         <h1 className={`text-4xl font-semibold ${uncialAntiqua.className}`}>
           Hogwarts Houses
         </h1>
-        <Filters />
+        {/* <Filters /> */}
       </div>
 
       <HousesCountainer />

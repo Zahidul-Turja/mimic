@@ -35,13 +35,13 @@ export async function getHarryPotterMovies() {
   return response.data;
 }
 
-export async function getMovieById(id) {
+export async function getMovieBySlug(slug) {
   const baseUrl = "https://api.potterdb.com/v1";
 
   const response = await axios
-    .get(`${baseUrl}/movies/${id}`)
+    .get(`${baseUrl}/movies/${slug}`)
     .then((response) => response.data);
-
+  console.log(response.data);
   return response.data;
 }
 

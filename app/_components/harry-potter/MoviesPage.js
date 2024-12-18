@@ -1,12 +1,10 @@
 "use client";
 
 import { poppins, uncialAntiqua } from "@/app/_utils/fonts/fonts";
-
 import { getHarryPotterMovies } from "@/app/_lib/harry-potter-services";
 import { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
-
-// import { movies } from "@/app/_lib/dummy-data";
+import Spinner from "../Spinner";
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -17,7 +15,6 @@ function MoviesPage() {
       try {
         const data = await getHarryPotterMovies();
         setMovies(data);
-        console.log(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -36,15 +33,21 @@ function MoviesPage() {
         </h1>
       </div>
 
-      <div className="my-8 grid w-full grid-cols-4 gap-6">
-        {movies.map((movie) => (
-          <ItemCard
-            key={movie.index}
-            item={movie}
-            image={movie.attributes.poster}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="my-8 grid w-full grid-cols-4 gap-6">
+          {movies.map((movie) => (
+            <ItemCard
+              key={movie.id}
+              to={`/harry-potter-world/movies`}
+              item={movie}
+              image={movie.attributes.poster}
+              customStyles={"rounded-2xl"}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

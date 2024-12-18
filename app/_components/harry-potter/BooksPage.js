@@ -10,15 +10,18 @@ import { useEffect, useState } from "react";
 
 import ItemCard from "./ItemCard";
 import { getHarryPotterBooks } from "@/app/_lib/harry-potter-services";
+import Spinner from "../Spinner";
 
 function BooksPage() {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchBooks() {
       try {
         const data = await getHarryPotterBooks();
         setBooks(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -34,15 +37,21 @@ function BooksPage() {
         </h1>
       </div>
 
-      <div className="my-8 grid w-full grid-cols-4 gap-6">
-        {books.map((book) => (
-          <ItemCard
-            key={book.index}
-            item={book}
-            image={book.attributes.cover}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="my-8 grid w-full grid-cols-4 gap-6">
+          {books.map((book) => (
+            <ItemCard
+              key={book.index}
+              to={"/harry-potter/books"}
+              item={book}
+              image={book.attributes.cover}
+              customStyles="my-6 rounded-lg border-gray-500 border shadow-lg"
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
