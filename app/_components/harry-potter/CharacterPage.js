@@ -3,7 +3,11 @@
 import { useState, useEffect } from "react";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { getHarryPotterCharacters } from "@/app/_lib/harry-potter-services";
-import { poppins } from "@/app/_utils/fonts/fonts";
+import {
+  poppins,
+  uncialAntiqua,
+  imFellEnglish,
+} from "@/app/_utils/fonts/fonts";
 
 import { LIST_ITEMS_PER_PAGE } from "@/app/_utils/constants";
 
@@ -38,9 +42,11 @@ function CharacterPage() {
   const displayedCharacters = characters.slice(startIndex, endIndex);
 
   return (
-    <div className={`w-full text-left ${poppins.className}`}>
+    <div className={`w-full text-left ${imFellEnglish.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-semibold`}>Characters</h1>
+        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+          Characters
+        </h1>
         <Filters />
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { poppins } from "@/app/_utils/fonts/fonts";
+import { poppins, uncialAntiqua } from "@/app/_utils/fonts/fonts";
 
 import { getHarryPotterMovies } from "@/app/_lib/harry-potter-services";
 import { useState, useEffect } from "react";
@@ -31,7 +31,9 @@ function MoviesPage() {
   return (
     <div className={`w-full text-left ${poppins.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-semibold`}>Harry Potter Movies</h1>
+        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+          Harry Potter Movies
+        </h1>
       </div>
 
       <div className="my-8 grid w-full grid-cols-4 gap-6">

@@ -4,18 +4,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { GiSpellBook } from "react-icons/gi";
-import { PiStudentBold } from "react-icons/pi";
-import { GrUserWorker } from "react-icons/gr";
 import { BsBook } from "react-icons/bs";
 import { MdMovieEdit, MdOutlineCastle } from "react-icons/md";
+
+import {
+  imFellEnglish,
+  cormorantGaramond,
+  uncialAntiqua,
+} from "@/app/_utils/fonts/fonts";
 
 function Sidebar() {
   const pathname = usePathname().replace("/harry-potter-world", "");
 
   return (
-    <aside className="scrollbar-none top-0 z-10 min-h-[calc(100vh-4rem)] w-80 overflow-y-scroll bg-primary-900 p-4 text-lg text-primary-100 first-letter:left-0">
+    <aside className="top-0 z-10 min-h-[calc(100vh-4rem)] w-80 overflow-y-scroll bg-primary-900 p-4 text-lg text-primary-100 scrollbar-none first-letter:left-0">
       <nav className="py-12">
-        <ul className="flex flex-col gap-4">
+        <ul className={`flex flex-col gap-4 ${uncialAntiqua.className}`}>
           <li>
             <Link
               href="/harry-potter-world"

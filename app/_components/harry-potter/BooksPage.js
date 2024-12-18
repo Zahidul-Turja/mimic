@@ -1,6 +1,11 @@
 "use client";
 
-import { poppins } from "@/app/_utils/fonts/fonts";
+import {
+  poppins,
+  cinzel,
+  caesarDressing,
+  uncialAntiqua,
+} from "@/app/_utils/fonts/fonts";
 import { useEffect, useState } from "react";
 
 import ItemCard from "./ItemCard";
@@ -24,12 +29,18 @@ function BooksPage() {
   return (
     <div className={`w-full text-left ${poppins.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-semibold`}>Harry Potter Books</h1>
+        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+          Harry Potter Books
+        </h1>
       </div>
 
       <div className="my-8 grid w-full grid-cols-4 gap-6">
         {books.map((book) => (
-          <ItemCard key={book.index} item={book} image={book.attributes.cover} />
+          <ItemCard
+            key={book.index}
+            item={book}
+            image={book.attributes.cover}
+          />
         ))}
       </div>
     </div>
