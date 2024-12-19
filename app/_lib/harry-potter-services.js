@@ -1,5 +1,6 @@
-import { LIST_ITEMS_PER_PAGE } from "@/app/_utils/constants";
 import axios from "axios";
+
+import { LIST_ITEMS_PER_PAGE } from "@/app/_utils/constants";
 
 export async function getHarryPotterCharacters() {
   const response = await axios

@@ -68,7 +68,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/movies"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/movies" ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("movies") ? "bg-gray-700" : "border-transparent"}`}
             >
               <MdMovieEdit className="w-7" />
               <span>Movies</span>
@@ -77,7 +77,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/books"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/books" ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("books") ? "bg-gray-700" : "border-transparent"}`}
             >
               <BsBook className="w-7" />
               <span>Books</span>

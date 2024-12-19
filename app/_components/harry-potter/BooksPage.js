@@ -44,7 +44,7 @@ function BooksPage() {
           {books.map((book) => (
             <ItemCard
               key={book.index}
-              to={"/harry-potter/books"}
+              to={"/harry-potter-world/books"}
               item={book}
               image={book.attributes.cover}
               customStyles="my-6 rounded-lg border-gray-500 border shadow-lg"
