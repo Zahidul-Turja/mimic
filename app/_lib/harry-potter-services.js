@@ -55,3 +55,13 @@ export async function getHarryPotterBooks() {
 
   return response.data;
 }
+
+export async function getBookBySlug(slug) {
+  const baseUrl = "https://api.potterdb.com/v1";
+
+  const response = await axios
+    .get(`${baseUrl}/books/${slug}`)
+    .then((response) => response.data);
+  console.log(response.data);
+  return response.data;
+}

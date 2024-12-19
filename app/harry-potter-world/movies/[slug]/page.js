@@ -100,7 +100,7 @@ function Page() {
                     </div>
                   </div> */}
                   <p
-                    className={`my-4 text-base font-extralight text-slate-300 ${cormorantGaramond.className}`}
+                    className={`my-8 text-base font-extralight leading-5 text-slate-300 ${cormorantGaramond.className}`}
                   >
                     {movie.summary}
                   </p>
@@ -209,60 +209,3 @@ function Page() {
 }
 
 export default Page;
-
-// attributes
-// :
-// box_office
-// :
-// "$1,342 billion"
-// budget
-// :
-// "$250 million (shared with part 1)"
-// cinematographers
-// :
-// ['Eduardo Serra']
-// directors
-// :
-// ['David Yates']
-// distributors
-// :
-// ['Warner Bros. Pictures']
-// editors
-// :
-// ['Mark Day']
-// music_composers
-// :
-// ['Alexandre Desplat']
-// poster
-// :
-// "https://www.wizardingworld.com/images/products/films/rectangle-8.png"
-// producers
-// :
-// (3) ['David Heyman', 'David Barron', 'J. K. Rowling']
-// rating
-// :
-// "PG-13"
-// release_date
-// :
-// "2011-07-07"
-// running_time
-// :
-// "130 minutes"
-// screenwriters
-// :
-// ['Steve Kloves']
-// slug
-// :
-// "harry-potter-and-the-deathly-hallows-part-2"
-// summary
-// :
-// "In the epic conclusion to the Harry Potter series, Harry, Ron and Hermione rush to find the remaining Horcruxes and destroy them. Their search leads them to robbing the Gringotts bank and finally back to their home, Hogwarts. Voldemort kills Snape to win over the allegiance of the Elder Wand, who gives Harry a memory before dying. Going through the memory, Harry comes to realize the bitter truth that he must sacrifice himself to bring down Voldemort. As the final battle rages on at Hogwarts, death and destruction follow, and many of the loved characters draw their last breath. This final movie, takes all the previous installments and builds upon it, painting a beautiful end to the much loved tale of Harry Potter."
-// title
-// :
-// "Harry Potter and the Deathly Hallows – Part 2"
-// trailer
-// :
-// "https://www.youtube.com/watch?v=5NYt1qirBWg"
-// wiki
-// :
-// "https://harrypotter.fandom.com/wiki/Harry_Potter_and_the_Deathly_Hallows:_Par
