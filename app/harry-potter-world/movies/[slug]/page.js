@@ -105,11 +105,11 @@ function Page() {
                     {movie.summary}
                   </p>
 
-                  <div className="flex gap-4 font-semibold">
+                  <div className="flex gap-4">
                     <a
                       href={movie.trailer}
                       target="_blank"
-                      className="flex items-center gap-2 rounded-full bg-[#92B0ED] px-4 py-2 text-gray-700"
+                      className="flex items-center gap-2 rounded-full bg-[#92B0ED] px-4 py-2 text-gray-900"
                     >
                       Watch Trailer
                       <div className="text-xl">
@@ -118,6 +118,7 @@ function Page() {
                     </a>
                     <a
                       href={movie.wiki}
+                      target="_blank"
                       className="flex items-center gap-2 rounded-full border-2 border-gray-400 px-4 py-2 text-gray-400"
                     >
                       Read Wiki
