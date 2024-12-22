@@ -21,7 +21,7 @@ export const categories = [
   {
     name: "Movies",
     "bg-image": "/movies.jpg",
-    href: "/image-gallery",
+    href: "/movies",
     desctiption: "Know about all the movies from all over the world",
   },
   {

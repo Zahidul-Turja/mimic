@@ -13,6 +13,7 @@
     "@dnd-kit/sortable": "^8.0.0",
     "axios": "^1.7.7",
     "next": "14.2.14",
+    "pexels": "^1.4.0",
     "react": "^18",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

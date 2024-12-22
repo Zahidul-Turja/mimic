@@ -47,7 +47,7 @@ function CharacterPage() {
         <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
           Characters
         </h1>
-        <Filters />
+        {/* <Filters /> */}
       </div>
 
       {loading ? (

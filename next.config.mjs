@@ -5,6 +5,7 @@ const nextConfig = {
       "ik.imagekit.io",
       "raw.githubusercontent.com",
       "www.wizardingworld.com",
+      "images.pexels.com",
     ],
   },
 };

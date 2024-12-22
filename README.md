@@ -5,3 +5,5 @@
 - Harry Potter Movies ([Documentation](https://api.potterdb.com/v1/movies))
 - Pexels ([Documentation](https://www.pexels.com/api/documentation/))
 - Dummy JSON ([Documentation](https://dummyjson.com/))
+
+- pexels APIkey = GwWYgMfBThjKa18JoptxKf0Dy6UouYdselNhNl3uzmyxE1u9ci44BMBA
