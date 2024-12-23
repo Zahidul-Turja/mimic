@@ -1,60 +1,108 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { IoIosSearch } from "react-icons/io";
 
 import client from "@/app/_lib/pexels-api";
 import Image from "next/image";
 import Categories from "./categories";
+import Spinner from "../Spinner";
+import Photos from "./photos";
 
 function Gallery() {
   const [photos, setPhotos] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const [error, setError] = useState(null);
+  const [type, setType] = useState("photos");
 
   useEffect(() => {
-    const fetchPhotos = async () => {
+    const fetchMedia = async () => {
       try {
-        const response = await client.photos.curated({
-          page: 1,
-          per_page: 20,
-        });
-        setPhotos(response.photos);
-        console.log(response.photos);
+        if (type === "photos") {
+          const response = await client.photos.curated({
+            page: 1,
+            per_page: 20,
+          });
+          setPhotos(response.photos);
+          console.log(response.photos);
+        }
+        if (type === "videos") {
+          const response = await client.videos.popular({
+            page: 1,
+            per_page: 20,
+          });
+          setVideos(response.videos);
+          console.log(response.videos);
+        }
       } catch (err) {
         setError(err.message);
       }
     };
 
-    fetchPhotos();
-  }, []);
+    fetchMedia();
+  }, [type]);
+
+  const handleSearchInput = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+
+    if (type === "photos") {
+      const response = await client.photos.search({
+        query: searchText,
+        page: 1,
+        per_page: 20,
+      });
+      setPhotos(response.photos);
+      console.log(response.photos);
+    }
+
+    if (type === "videos") {
+      const response = await client.videos.search({
+        query: searchText,
+        page: 1,
+        per_page: 20,
+      });
+      setVideos(response.videos);
+      console.log(response.videos);
+    }
+  };
+
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search"
-        className="p-y2 my-8 h-12 w-[60%] rounded-full border-2 border-primary-200 bg-primary-950 px-6"
-      />
-      <Categories />
-      {error && <p className="text-red-500">Error: {error}</p>}
-      <div className="my-8 columns-2 gap-4 space-y-4 md:columns-3 lg:columns-4">
-        {photos.length > 0 ? (
-          photos.map((photo) => (
-            <div key={photo.id} className="relative overflow-hidden rounded-md">
-              <Image
-                src={photo.src.large2x}
-                alt={photo.alt || "Pexels Image"}
-                placeholder="blur"
-                blurDataURL={photo.src.large2x}
-                quality={90}
-                width={300}
-                height={300}
-                className="h-auto w-full rounded-md object-cover"
-              />
-            </div>
-          ))
-        ) : (
-          <p>Loading photos...</p>
-        )}
+      <div className="mx-auto flex w-[100%] items-center justify-between">
+        <select
+          name="type"
+          id="type"
+          className="h-12 rounded-lg border-2 border-primary-200 bg-primary-200 px-6 font-semibold text-primary-950 outline-none transition-all duration-500 focus:border-primary-100"
+        >
+          <option value="photos">Photos</option>
+          <option value="videos">Videos</option>
+        </select>
+        <div className="relative my-4 ml-6 mr-auto w-[30%] items-center transition-all duration-500 focus-within:w-[32%]">
+          <form action="submit" onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchText}
+              onChange={handleSearchInput}
+              className="h-12 w-full rounded-full border-2 border-primary-300 bg-primary-950 px-6 outline-none focus:border-primary-100"
+            />
+            <button className="absolute right-6 top-3 text-2xl">
+              <IoIosSearch />
+            </button>
+          </form>
+        </div>
+        <Categories />
       </div>
+
+      {error && <p className="text-red-500">Error: {error}</p>}
+      {type === "photos" && photos && photos.length > 0 && (
+        <Photos photos={photos} />
+      )}
       <button className="my-4 w-full rounded-md border-2 border-primary-300 py-4 text-xl tracking-widest text-primary-300">
         Load More
       </button>

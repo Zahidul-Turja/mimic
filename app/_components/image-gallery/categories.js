@@ -1,35 +1,26 @@
 function Categories() {
   return (
-    <ul className="flex flex-wrap gap-4 font-semibold">
+    <ul className="flex flex-wrap justify-center gap-4 text-center font-semibold">
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
         Technology
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Dark
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Nature
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Architecture
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Anime
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Wallpapers
       </li>
       <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
-      </li>
-      <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
-      </li>
-      <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
-      </li>
-      <li className="rounded-lg bg-primary-100 px-4 py-2 text-primary-900">
-        Technology
+        Neon
       </li>
     </ul>
   );

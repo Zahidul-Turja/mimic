@@ -8,7 +8,7 @@ export const metadata = {
 function Page() {
   return (
     <BoundingBox>
-      <h1 className="mb-4 text-xl font-bold">Image Gallery</h1>
+      <h1 className="mb-4 text-3xl font-bold tracking-wide">Mimic Gallery</h1>
       <Gallery />
     </BoundingBox>
   );
