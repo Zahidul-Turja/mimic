@@ -105,7 +105,11 @@ function Gallery() {
             </button>
           </form>
         </div>
-        <Categories />
+        <Categories
+          setPhotos={setPhotos}
+          setVideos={setVideos}
+          setLoading={setLoading}
+        />
       </div>
 
       {loading && <Spinner />}

@@ -23,7 +23,7 @@ function Photos({ photos }) {
 
   return (
     <div className="my-8 columns-2 gap-4 space-y-4 md:columns-3 lg:columns-4">
-      {photos.length > 0 ? (
+      {photos && photos.length > 0 ? (
         photos.map((photo) => (
           <div
             key={photo.id}
