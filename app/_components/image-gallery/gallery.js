@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 
 import client from "@/app/_lib/pexels-api";
@@ -13,6 +13,8 @@ function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [videos, setVideos] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState(null);
   const [type, setType] = useState("photos");
 
@@ -37,6 +39,8 @@ function Gallery() {
         }
       } catch (err) {
         setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -49,8 +53,10 @@ function Gallery() {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (type === "photos") {
+      setPhotos([]);
       const response = await client.photos.search({
         query: searchText,
         page: 1,
@@ -61,6 +67,7 @@ function Gallery() {
     }
 
     if (type === "videos") {
+      setVideos([]);
       const response = await client.videos.search({
         query: searchText,
         page: 1,
@@ -69,6 +76,8 @@ function Gallery() {
       setVideos(response.videos);
       console.log(response.videos);
     }
+
+    setLoading(false);
   };
 
   return (
@@ -99,13 +108,17 @@ function Gallery() {
         <Categories />
       </div>
 
+      {loading && <Spinner />}
       {error && <p className="text-red-500">Error: {error}</p>}
       {type === "photos" && photos && photos.length > 0 && (
         <Photos photos={photos} />
       )}
-      <button className="my-4 w-full rounded-md border-2 border-primary-300 py-4 text-xl tracking-widest text-primary-300">
-        Load More
-      </button>
+
+      {!loading && (
+        <button className="my-4 w-full rounded-md border-2 border-primary-300 py-4 text-xl tracking-widest text-primary-300">
+          Load More
+        </button>
+      )}
     </>
   );
 }
