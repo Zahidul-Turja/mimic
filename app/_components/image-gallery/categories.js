@@ -1,7 +1,7 @@
 import { image_categories } from "@/app/_lib/categories";
 import client from "@/app/_lib/pexels-api";
 
-function Categories({ setPhotos, setVideos, setLoading }) {
+function Categories({ setPhotos, setVideos, setSearchText, setLoading }) {
   const handleSearchSubmit = async (searchText, type = "photos") => {
     setLoading(true);
 
@@ -27,6 +27,7 @@ function Categories({ setPhotos, setVideos, setLoading }) {
       console.log(response.videos);
     }
 
+    setSearchText(searchText);
     setLoading(false);
   };
 

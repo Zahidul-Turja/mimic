@@ -108,9 +108,16 @@ function Gallery() {
         <Categories
           setPhotos={setPhotos}
           setVideos={setVideos}
+          setSearchText={setSearchText}
           setLoading={setLoading}
         />
       </div>
+
+      {searchText && (
+        <p className="my-4 w-auto items-start border-b border-primary-100 py-8 text-left text-2xl font-extralight italic">
+          Search results for <span className="font-bold">{searchText}</span>
+        </p>
+      )}
 
       {loading && <Spinner />}
       {error && <p className="text-red-500">Error: {error}</p>}

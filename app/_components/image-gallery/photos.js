@@ -32,7 +32,7 @@ function Photos({ photos }) {
             <GalleryImage photo={photo} />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            <div className="absolute bottom-[-50px] left-3 text-left transition-all duration-500 group-hover:bottom-6">
+            <div className="absolute bottom-[-50px] left-3 text-left opacity-0 transition-all duration-500 group-hover:bottom-3 group-hover:opacity-100">
               <h3 className="my-1 text-base font-bold text-gray-100">
                 {photo.photographer}
               </h3>

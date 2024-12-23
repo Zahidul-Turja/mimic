@@ -8,7 +8,11 @@ export const metadata = {
 function Page() {
   return (
     <BoundingBox>
-      <h1 className="mb-4 text-3xl font-bold tracking-wide">Mimic Gallery</h1>
+      <h1 className="text-3xl font-bold tracking-wide">Mimic Gallery</h1>
+      <p className="mx-auto my-4 w-[50%] text-lg">
+        The best free stock photos, royalty free images & videos shared by
+        creators to download and use in your next project.
+      </p>
       <Gallery />
     </BoundingBox>
   );
