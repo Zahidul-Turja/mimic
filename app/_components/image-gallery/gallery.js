@@ -1,10 +1,10 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 
 import client from "@/app/_lib/pexels-api";
-import Image from "next/image";
+
 import Categories from "./categories";
 import Spinner from "../Spinner";
 import Photos from "./photos";
@@ -58,7 +58,7 @@ function Gallery() {
     if (type === "photos") {
       setPhotos([]);
       const response = await client.photos.search({
-        query: searchText,
+        query: searchText.trim(),
         page: 1,
         per_page: 20,
       });
@@ -69,7 +69,7 @@ function Gallery() {
     if (type === "videos") {
       setVideos([]);
       const response = await client.videos.search({
-        query: searchText,
+        query: searchText.trim(),
         page: 1,
         per_page: 20,
       });
