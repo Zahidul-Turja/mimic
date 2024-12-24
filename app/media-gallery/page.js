@@ -1,5 +1,5 @@
 import BoundingBox from "@/app/_components/BoundingBox";
-import Gallery from "../_components/image-gallery/gallery";
+import Gallery from "../_components/media-gallery/gallery";
 
 export const metadata = {
   title: "Image Gallery",

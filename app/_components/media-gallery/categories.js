@@ -1,7 +1,13 @@
 import { image_categories } from "@/app/_lib/categories";
 import client from "@/app/_lib/pexels-api";
 
-function Categories({ setPhotos, setVideos, setSearchText, setLoading }) {
+function Categories({
+  setPhotos,
+  setVideos,
+  searchText,
+  setSearchText,
+  setLoading,
+}) {
   const handleSearchSubmit = async (searchText, type = "photos") => {
     setLoading(true);
 
@@ -36,7 +42,7 @@ function Categories({ setPhotos, setVideos, setSearchText, setLoading }) {
       {image_categories.map((category, key) => (
         <li
           key={key}
-          className="cursor-pointer rounded-lg bg-primary-100 px-4 py-2 capitalize text-primary-900"
+          className={`cursor-pointer rounded-lg border border-primary-100 bg-primary-100 px-4 py-2 capitalize transition-all duration-300 ease-in-out hover:bg-primary-950 hover:text-primary-100 ${searchText === category ? "cursor-not-allowed bg-primary-950 text-primary-100" : "text-primary-900"}`}
           onClick={() => handleSearchSubmit(category, "photos")}
         >
           {category}

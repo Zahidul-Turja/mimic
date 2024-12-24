@@ -1,8 +1,8 @@
 export const categories = [
   {
-    name: "Image Gallery",
+    name: "Media Gallery",
     "bg-image": "/image-gallery.jpg",
-    href: "/image-gallery",
+    href: "/media-gallery",
     desctiption: "Gets images and videos from Pexels, Unsplash and Pixabay",
   },
   {

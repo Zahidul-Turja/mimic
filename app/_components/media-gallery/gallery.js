@@ -8,6 +8,7 @@ import client from "@/app/_lib/pexels-api";
 import Categories from "./categories";
 import Spinner from "../Spinner";
 import Photos from "./photos";
+import Videos from "./videos";
 
 function Gallery() {
   const [photos, setPhotos] = useState([]);
@@ -48,6 +49,8 @@ function Gallery() {
     };
 
     fetchMedia();
+    setNextPage(1);
+    setSearchText("");
   }, [type]);
 
   const handleSearchInput = (e) => {
@@ -89,11 +92,38 @@ function Gallery() {
 
   const handleLoadMore = async () => {
     try {
-      const response = await client.photos.curated({
-        page: nextPage,
-        per_page: 20,
-      });
-      setPhotos([...photos, ...response.photos]);
+      setLoading(true);
+      if (type === "photos") {
+        if (!searchText) {
+          const response = await client.photos.curated({
+            page: nextPage,
+            per_page: 20,
+          });
+          setPhotos([...photos, ...response.photos]);
+        } else {
+          const response = await client.photos.search({
+            query: searchText.trim(),
+            page: nextPage,
+            per_page: 20,
+          });
+          setPhotos([...photos, ...response.photos]);
+        }
+      } else if (type === "videos") {
+        if (!searchText) {
+          const response = await client.videos.popular({
+            page: nextPage,
+            per_page: 20,
+          });
+          setVideos([...videos, ...response.videos]);
+        } else {
+          const response = await client.videos.search({
+            query: searchText.trim(),
+            page: nextPage,
+            per_page: 20,
+          });
+          setVideos([...videos, ...response.videos]);
+        }
+      }
       setNextPage((prev) => prev + 1);
     } catch (err) {
       setError(err.message);
@@ -109,6 +139,7 @@ function Gallery() {
           name="type"
           id="type"
           className="h-11 cursor-pointer rounded-lg border-2 border-primary-200 bg-primary-200 px-6 font-semibold text-primary-950 outline-none transition-all duration-500 focus:border-primary-100"
+          onChange={(e) => setType(e.target.value)}
         >
           <option value="photos">Photos</option>
           <option value="videos">Videos</option>
@@ -130,6 +161,7 @@ function Gallery() {
         <Categories
           setPhotos={setPhotos}
           setVideos={setVideos}
+          searchText={searchText}
           setSearchText={setSearchText}
           setLoading={setLoading}
         />
@@ -145,6 +177,9 @@ function Gallery() {
       {error && <p className="text-red-500">Error: {error}</p>}
       {type === "photos" && photos && photos.length > 0 && (
         <Photos photos={photos} />
+      )}
+      {type === "videos" && videos && videos.length > 0 && (
+        <Videos videos={videos} />
       )}
 
       {!loading && (
