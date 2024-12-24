@@ -12,6 +12,7 @@ import Photos from "./photos";
 function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [nextPage, setNextPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +28,7 @@ function Gallery() {
             per_page: 20,
           });
           setPhotos(response.photos);
+          setNextPage((prev) => prev + 1);
           console.log(response.photos);
         }
         if (type === "videos") {
@@ -35,6 +37,7 @@ function Gallery() {
             per_page: 20,
           });
           setVideos(response.videos);
+          setNextPage((prev) => prev + 1);
           console.log(response.videos);
         }
       } catch (err) {
@@ -54,6 +57,10 @@ function Gallery() {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!searchText.trim()) {
+      return;
+    }
 
     if (type === "photos") {
       setPhotos([]);
@@ -80,18 +87,33 @@ function Gallery() {
     setLoading(false);
   };
 
+  const handleLoadMore = async () => {
+    try {
+      const response = await client.photos.curated({
+        page: nextPage,
+        per_page: 20,
+      });
+      setPhotos([...photos, ...response.photos]);
+      setNextPage((prev) => prev + 1);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="mx-auto flex w-[100%] items-center justify-between">
         <select
           name="type"
           id="type"
-          className="h-12 rounded-lg border-2 border-primary-200 bg-primary-200 px-6 font-semibold text-primary-950 outline-none transition-all duration-500 focus:border-primary-100"
+          className="h-11 cursor-pointer rounded-lg border-2 border-primary-200 bg-primary-200 px-6 font-semibold text-primary-950 outline-none transition-all duration-500 focus:border-primary-100"
         >
           <option value="photos">Photos</option>
           <option value="videos">Videos</option>
         </select>
-        <div className="relative my-4 ml-6 mr-auto w-[30%] items-center transition-all duration-500 focus-within:w-[32%]">
+        <div className="relative my-4 ml-6 mr-auto w-[30%] items-center transition-all duration-500 focus-within:w-[32%] hover:w-[32%]">
           <form action="submit" onSubmit={handleSearchSubmit}>
             <input
               type="text"
@@ -126,7 +148,10 @@ function Gallery() {
       )}
 
       {!loading && (
-        <button className="my-4 w-full rounded-md border-2 border-primary-300 py-4 text-xl tracking-widest text-primary-300">
+        <button
+          className="my-4 w-full rounded-md border-2 border-gray-200/70 py-3 text-lg tracking-widest text-gray-200/80"
+          onClick={handleLoadMore}
+        >
           Load More
         </button>
       )}
