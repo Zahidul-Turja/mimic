@@ -14,7 +14,7 @@ function SpellsPage() {
         <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
           Magic Spells
         </h1>
-        <Filters />
+        {/* <Filters /> */}
       </div>
 
       <SpellsContainer />

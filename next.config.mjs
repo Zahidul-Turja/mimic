@@ -6,6 +6,7 @@ const nextConfig = {
       "raw.githubusercontent.com",
       "www.wizardingworld.com",
       "images.pexels.com",
+      "www.themealdb.com",
     ],
   },
 };

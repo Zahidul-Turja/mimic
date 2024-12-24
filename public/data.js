@@ -13,10 +13,10 @@ export const categories = [
       "Get to know Harry Potter World. All it's characters, spells and more.",
   },
   {
-    name: "Food Recipes",
+    name: "Recipes",
     "bg-image": "/food-recipes.jpg",
-    href: "/image-gallery",
-    desctiption: "Gets food recipes from all over the internet",
+    href: "/food",
+    desctiption: "Recipes from all over the world of different cuisines.",
   },
   {
     name: "Movies",
@@ -27,7 +27,13 @@ export const categories = [
   {
     name: "Motivation",
     "bg-image": "/motivation.jpg",
-    href: "/image-gallery",
+    href: "/movies",
     desctiption: "Get motivational quotes for your current situation",
+  },
+  {
+    name: "E Commerce",
+    "bg-image": "/e-comm.jpeg",
+    href: "/movies",
+    desctiption: "E-commerce website simulation with dummy data",
   },
 ];
