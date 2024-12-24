@@ -1,4 +1,17 @@
-import { Inter, Josefin_Sans, Poppins } from "next/font/google";
+import {
+  Inter,
+  Josefin_Sans,
+  Poppins,
+  Pacifico,
+  Dancing_Script,
+  Great_Vibes,
+  Raleway,
+  Cormorant_Garamond,
+  Cinzel,
+  IM_Fell_English,
+  Caesar_Dressing,
+  Uncial_Antiqua,
+} from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -19,14 +32,7 @@ export const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-import {
-  Cormorant_Garamond,
-  Cinzel,
-  IM_Fell_English,
-  Caesar_Dressing,
-  Uncial_Antiqua,
-} from "next/font/google";
-
+// Harry Potter
 export const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
@@ -55,4 +61,29 @@ export const uncialAntiqua = Uncial_Antiqua({
   subsets: ["latin"],
   display: "swap",
   weight: ["400"], // Only one weight available
+});
+
+// Recipe
+export const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"], // Available weights for Dancing Script
+});
+
+export const pacifico = Pacifico({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"], // Pacifico only supports 400 weight
+});
+
+export const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"], // Great Vibes only supports 400 weight
+});
+
+export const raleway = Raleway({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"], // Available weights for Raleway
 });

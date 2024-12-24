@@ -1,11 +1,18 @@
 "use client";
 
-import BoundingBox from "@/app/_components/BoundingBox";
-import { getMealsByCategory } from "@/app/_lib/meal-services";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+
+import {
+  greatVibes,
+  dancingScript,
+  pacifico,
+  raleway,
+} from "@/app/_utils/fonts/fonts";
+import BoundingBox from "@/app/_components/BoundingBox";
+import { getMealsByCategory } from "@/app/_lib/meal-services";
 
 function Page() {
   const [recipes, setRecipes] = useState([]);
@@ -22,10 +29,15 @@ function Page() {
 
   return (
     <BoundingBox>
-      <h1 className="text-3xl font-bold tracking-wide">
-        Recipes for {category}
+      <h1
+        className={`text-4xl font-bold tracking-wide ${dancingScript.className}`}
+      >
+        Recipes for{" "}
+        <span className={`${dancingScript.className}`}>{category}</span>
       </h1>
-      <p className="mx-auto my-4 w-[50%] text-lg">
+      <p
+        className={`mx-auto my-4 w-[50%] text-lg font-light ${raleway.className}`}
+      >
         All available recipes for {category}. Please find a recipe you like and
         let me know what you think.
       </p>
@@ -50,7 +62,9 @@ function Page() {
               </div>
               {/* Title */}
               <h2 className="absolute inset-0 flex scale-75 items-center justify-center text-center text-3xl font-bold text-primary-100 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100">
-                <span className="max-w-[90%] rounded-lg bg-primary-950/85 px-4 py-6">
+                <span
+                  className={`${raleway.className} max-w-[90%] rounded-lg bg-primary-950/85 px-4 py-6`}
+                >
                   {recipe.strMeal}
                 </span>
               </h2>
