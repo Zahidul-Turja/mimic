@@ -11,7 +11,7 @@ const HEADERS = {
 export async function getQuotesList() {
   try {
     const url = PROXY_URL + BASE_URL;
-    const response = await axios.get(BASE_URL, {
+    const response = await axios.get(url, {
       headers: HEADERS,
     });
     return response.data;
