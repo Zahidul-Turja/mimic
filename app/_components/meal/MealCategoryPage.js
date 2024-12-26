@@ -5,23 +5,32 @@ import Image from "next/image";
 
 import { getMealCategories } from "@/app/_lib/meal-services";
 import Link from "next/link";
+import Spinner from "../Spinner";
 
 function MealCategoryPage() {
   const [mealCategories, setMealCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMeals() {
       try {
+        setLoading(true);
         const mealCategories = await getMealCategories();
 
         setMealCategories(mealCategories);
       } catch (error) {
         console.error("Error fetching meal categories:", error);
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchMeals();
   }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="group my-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
