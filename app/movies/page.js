@@ -1,5 +1,7 @@
+import BoundingBox from "../_components/BoundingBox";
+
 function Page() {
-  return <div>Movies</div>;
+  return <BoundingBox>In Progress</BoundingBox>;
 }
 
 export default Page;

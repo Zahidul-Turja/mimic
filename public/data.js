@@ -27,13 +27,13 @@ export const categories = [
   {
     name: "Motivation",
     "bg-image": "/motivation.jpg",
-    href: "/movies",
+    href: "/quotes",
     desctiption: "Get motivational quotes for your current situation",
   },
   {
     name: "E Commerce",
     "bg-image": "/e-comm.jpeg",
-    href: "/movies",
+    href: "/ecomm",
     desctiption: "E-commerce website simulation with dummy data",
   },
 ];
