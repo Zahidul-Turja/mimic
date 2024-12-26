@@ -28,7 +28,7 @@ export const categories = [
     name: "Motivation",
     "bg-image": "/motivation.jpg",
     href: "/quotes",
-    desctiption: "Get motivational quotes for your current situation",
+    desctiption: "Need motivation? Get quotes from all over the world",
   },
   {
     name: "E Commerce",

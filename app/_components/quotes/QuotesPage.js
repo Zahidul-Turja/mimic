@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { IoHeartSharp } from "react-icons/io5";
+
 import Spinner from "../Spinner";
 import { getQuotesList } from "@/app/_lib/quotes-services";
 
@@ -14,7 +16,6 @@ function QuotesPage() {
       try {
         const data = await getQuotesList();
         setQuotes(data.quotes);
-        console.log(data.quotes);
       } catch (error) {
         console.error("Error fetching quotes:", error);
       } finally {
@@ -26,13 +27,39 @@ function QuotesPage() {
   }, []);
 
   return (
-    <div className="border-2 border-primary-200">
+    <div className="mx-auto my-8 w-full md:w-[70%] lg:w-[50%]">
       {loading ? (
         <Spinner />
       ) : (
-        <div>
+        <div className="text-left">
           {quotes.map((quote) => (
-            <div key={quote.id}>{quote.body}</div>
+            <div
+              key={quote.id}
+              className="my-8 rounded-lg border-2 border-primary-200 px-7 py-6 shadow-md shadow-[#D2E3C8]/30"
+            >
+              <div className="flex gap-2">
+                {quote.tags.map((tag, key) => (
+                  <span
+                    key={key}
+                    className="rounded-full border border-primary-200 px-4 py-1 text-sm font-light capitalize text-primary-100"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="mb-2 mt-4 text-justify text-lg leading-6 tracking-wide">
+                {quote.body}
+              </p>
+              <h3 className="text-right italic">
+                <span className="font-extralight">by,</span>{" "}
+                <span className="text-[#D2E3C8]">{quote.author}</span>
+              </h3>
+
+              <div className="flex items-center gap-2">
+                <IoHeartSharp className="text-xl text-[#E16A54]" />
+                <span className="text-lg">{quote.favorites_count}</span>
+              </div>
+            </div>
           ))}
         </div>
       )}
@@ -41,55 +68,3 @@ function QuotesPage() {
 }
 
 export default QuotesPage;
-
-// author
-// :
-// "Edsger Dijkstra"
-// author_permalink
-// :
-// "edsger-dijkstra"
-// body
-// :
-// "Computer science is no more about computers than astronomy is about telescopes."
-// dialogue
-// :
-// false
-// downvotes_count
-// :
-// 0
-// favorites_count
-// :
-// 4
-// id
-// :
-// 299
-// private
-// :
-// false
-// tags
-// :
-// Array(4)
-// 0
-// :
-// "computers"
-// 1
-// :
-// "astronomy"
-// 2
-// :
-// "programming"
-// 3
-// :
-// "computer-science"
-// length
-// :
-// 4
-// [[Prototype]]
-// :
-// Array(0)
-// upvotes_count
-// :
-// 1
-// url
-// :
-// "https://favqs.com/quotes/edsger-dijkstra/299-computer-scienc-"
