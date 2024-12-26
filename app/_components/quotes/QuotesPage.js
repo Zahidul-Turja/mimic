@@ -27,7 +27,7 @@ function QuotesPage() {
   }, []);
 
   return (
-    <div className="mx-auto my-8 w-full md:w-[70%] lg:w-[50%]">
+    <div className="mx-auto my-6 w-full md:my-8 md:w-[70%] lg:w-[50%]">
       {loading ? (
         <Spinner />
       ) : (
@@ -35,13 +35,13 @@ function QuotesPage() {
           {quotes.map((quote) => (
             <div
               key={quote.id}
-              className="my-8 rounded-lg border-2 border-primary-200 px-7 py-6 shadow-md shadow-[#D2E3C8]/30"
+              className="my-6 rounded-lg border border-primary-200 bg-gray-950 px-7 py-6 shadow-md shadow-[#D2E3C8]/30 md:my-10 lg:my-12"
             >
               <div className="flex gap-2">
                 {quote.tags.map((tag, key) => (
                   <span
                     key={key}
-                    className="rounded-full border border-primary-200 px-4 py-1 text-sm font-light capitalize text-primary-100"
+                    className="rounded-full border border-primary-200 bg-primary-200 px-4 py-1 text-sm font-medium capitalize text-primary-900"
                   >
                     {tag}
                   </span>

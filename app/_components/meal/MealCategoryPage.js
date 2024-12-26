@@ -39,7 +39,7 @@ function MealCategoryPage() {
           <Link
             key={category.idCategory}
             href={`/food/${category.strCategory}`}
-            className="relative h-96 w-full overflow-hidden rounded-lg border border-gray-200 shadow-md transition-all duration-300 group-hover:opacity-50 hover:scale-105 hover:!opacity-100 hover:shadow-lg"
+            className="relative h-96 w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-950 shadow-md transition-all duration-300 group-hover:opacity-50 hover:scale-105 hover:!opacity-100 hover:shadow-lg"
           >
             <div className="relative mx-auto my-4 h-[55%] w-[90%]">
               <Image
@@ -54,7 +54,7 @@ function MealCategoryPage() {
               <h2 className="text-lg font-bold text-white">
                 {category.strCategory}
               </h2>
-              <p className="line-clamp-4 text-sm text-gray-200">
+              <p className="line-clamp-4 px-2 text-justify text-sm text-gray-200">
                 {category.strCategoryDescription}
               </p>
             </div>

@@ -12,7 +12,6 @@ const URL = PROXY_URL + BASE_URL;
 
 export async function getQuotesList() {
   try {
-    console.log("API: ", API_KEY);
     const response = await axios.get(URL, {
       headers: HEADERS,
     });
