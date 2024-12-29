@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { IoHeartSharp } from "react-icons/io5";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 
 import Spinner from "../Spinner";
 import { getQuotesList } from "@/app/_lib/quotes-services";
@@ -10,11 +10,14 @@ import { getQuotesList } from "@/app/_lib/quotes-services";
 function QuotesPage() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchQuotes() {
       try {
-        const data = await getQuotesList();
+        setLoading(true);
+        const data = await getQuotesList(page);
+        console.log(data.quotes);
         setQuotes(data.quotes);
       } catch (error) {
         console.error("Error fetching quotes:", error);
@@ -24,7 +27,7 @@ function QuotesPage() {
     }
 
     fetchQuotes();
-  }, []);
+  }, [page]);
 
   return (
     <div className="mx-auto my-6 w-full md:my-8 md:w-[70%] lg:w-[50%]">
@@ -32,35 +35,51 @@ function QuotesPage() {
         <Spinner />
       ) : (
         <div className="text-left">
-          {quotes.map((quote) => (
-            <div
-              key={quote.id}
-              className="my-6 rounded-lg border border-primary-200 bg-gray-950 px-7 py-6 shadow-md shadow-[#D2E3C8]/30 md:my-10 lg:my-12"
-            >
-              <div className="flex gap-2">
-                {quote.tags.map((tag, key) => (
-                  <span
-                    key={key}
-                    className="rounded-full border border-primary-200 bg-primary-200 px-4 py-1 text-sm font-medium capitalize text-primary-900"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          {quotes &&
+            quotes.map((quote) => (
+              <div
+                key={quote.id}
+                className="my-6 rounded-lg border border-primary-200 bg-gray-950 px-7 py-6 shadow-md shadow-[#D2E3C8]/30 md:my-10 lg:my-12"
+              >
+                <p className="mb-2 mt-4 text-justify text-lg leading-6 tracking-wide">
+                  <FaQuoteLeft className="mb-6 mr-2 inline text-sm text-[#E16A54]" />
+                  {quote.quote}
+                  {/* <FaQuoteRight className="mb-6 mr-2 inline text-sm text-[#E16A54]" /> */}
+                </p>
+                <h3 className="text-right italic">
+                  <span className="font-extralight">by,</span>{" "}
+                  <span className="text-[#D2E3C8]">{quote.author}</span>
+                </h3>
               </div>
-              <p className="mb-2 mt-4 text-justify text-lg leading-6 tracking-wide">
-                {quote.body}
-              </p>
-              <h3 className="text-right italic">
-                <span className="font-extralight">by,</span>{" "}
-                <span className="text-[#D2E3C8]">{quote.author}</span>
-              </h3>
+            ))}
+        </div>
+      )}
 
-              <div className="flex items-center gap-2">
-                <IoHeartSharp className="text-xl text-[#E16A54]" />
-                <span className="text-lg">{quote.favorites_count}</span>
-              </div>
+      {!loading && (
+        <div div className="flex justify-between">
+          <button
+            onClick={() => {
+              if (page > 1) setPage(page - 1);
+            }}
+            disabled={page === 1}
+            className="border-b-2 border-primary-200 px-4 py-2 disabled:opacity-50"
+          >
+            <div className="flex items-center gap-2">
+              <FaAnglesLeft className="" />
+              Previous
             </div>
-          ))}
+          </button>
+          <button
+            onClick={() => {
+              if (page < 10) setPage(page + 1);
+            }}
+            className="border-b-2 border-primary-200 px-4 py-2 disabled:opacity-50"
+          >
+            <div className="flex items-center gap-2">
+              Next
+              <FaAnglesRight className="" />
+            </div>
+          </button>
         </div>
       )}
     </div>
