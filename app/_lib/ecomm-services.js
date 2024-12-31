@@ -65,3 +65,12 @@ export async function getProducts() {
     console.error("Error fetching products:", error);
   }
 }
+
+export async function getProductById(id) {
+  try {
+    const response = await axios.get(`${BASE_URL}/products/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+  }
+}
