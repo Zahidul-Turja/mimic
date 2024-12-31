@@ -151,7 +151,7 @@ function ProductPage() {
           </div>
         </div>
       </div>
-      <Reviews reviews={product.reviews} />
+      <Reviews reviews={product.reviews} rating={product.rating} />
     </div>
   );
 }
