@@ -17,13 +17,13 @@ function Sidebar() {
   const pathname = usePathname().replace("/harry-potter-world", "");
 
   return (
-    <aside className="top-0 z-10 min-h-[calc(100vh-4rem)] w-80 overflow-y-scroll bg-primary-900 p-4 text-lg text-primary-100 scrollbar-none first-letter:left-0">
+    <aside className="top-0 z-10 min-h-[calc(100vh-4rem)] w-80 overflow-y-scroll bg-primary-900 p-4 text-lg text-gray-600 scrollbar-none first-letter:left-0">
       <nav className="py-12">
         <ul className={`flex flex-col gap-4 ${uncialAntiqua.className}`}>
           <li>
             <Link
               href="/harry-potter-world"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "" ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "" ? "bg-gray-700 text-primary-100" : "border-transparent"}`}
             >
               <HiOutlineUsers className="w-7" />
               <span>Characters</span>
@@ -32,7 +32,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/spells"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/spells" ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/spells" ? "bg-gray-700 text-primary-100" : "border-transparent"}`}
             >
               <GiSpellBook className="w-7" />
               <span>Magic Spells</span>
@@ -59,7 +59,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/houses"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/houses" ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname === "/houses" ? "bg-gray-700 text-primary-100" : "border-transparent"}`}
             >
               <MdOutlineCastle className="w-7" />
               <span>Houses</span>
@@ -68,7 +68,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/movies"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("movies") ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("movies") ? "bg-gray-700 text-primary-100" : "border-transparent"}`}
             >
               <MdMovieEdit className="w-7" />
               <span>Movies</span>
@@ -77,7 +77,7 @@ function Sidebar() {
           <li>
             <Link
               href="/harry-potter-world/books"
-              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("books") ? "bg-gray-700" : "border-transparent"}`}
+              className={`flex items-center gap-4 rounded-lg px-9 py-2 ${pathname.includes("books") ? "bg-gray-700 text-primary-100" : "border-transparent"}`}
             >
               <BsBook className="w-7" />
               <span>Books</span>

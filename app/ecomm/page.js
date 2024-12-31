@@ -1,9 +1,10 @@
 import BoundingBox from "../_components/BoundingBox";
+import Login from "../_components/ecomm/Login";
 
 function Page() {
   return (
     <BoundingBox>
-      <h1 className="text-3xl font-bold tracking-wide">In Progress</h1>
+      <Login />
     </BoundingBox>
   );
 }

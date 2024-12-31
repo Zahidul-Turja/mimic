@@ -11,6 +11,7 @@ function QuotesPage() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(10);
 
   useEffect(() => {
     async function fetchQuotes() {
@@ -62,7 +63,7 @@ function QuotesPage() {
               if (page > 1) setPage(page - 1);
             }}
             disabled={page === 1}
-            className="border-b-2 border-primary-200 px-4 py-2 disabled:opacity-50"
+            className="border-b-2 border-primary-200 px-4 py-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <div className="flex items-center gap-2">
               <FaAnglesLeft className="" />
@@ -73,7 +74,8 @@ function QuotesPage() {
             onClick={() => {
               if (page < 10) setPage(page + 1);
             }}
-            className="border-b-2 border-primary-200 px-4 py-2 disabled:opacity-50"
+            disabled={page === totalPages}
+            className="border-b-2 border-primary-200 px-4 py-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <div className="flex items-center gap-2">
               Next
