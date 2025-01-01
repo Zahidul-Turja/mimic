@@ -47,7 +47,7 @@ function ProductsList() {
                     <div className="relative h-72 w-full overflow-hidden rounded-t-lg">
                       <Image
                         src={product.thumbnail}
-                        alt={product.name}
+                        alt={product.title}
                         width={400}
                         height={700}
                         className="h-full w-full bg-gradient-to-tr"

@@ -43,14 +43,22 @@ export async function logout() {
   return true;
 }
 
+export async function isLoggedIn() {
+  const accessToken = window.localStorage.getItem("access_token");
+  const refreshToken = window.localStorage.getItem("refresh_token");
+  return !!accessToken && !!refreshToken;
+}
+
 export async function getCurrentUser() {
   try {
+    const access_token = window.localStorage.getItem("access_token");
     const response = await axios.get(`${BASE_URL}/auth/me`, {
       headers: {
-        Authorization: `Bearer ${window.localStorage.getItem("access_token")}`,
-        withCredentials: false,
+        Authorization: `Bearer ${access_token}`,
       },
+      // withCredentials: false,
     });
+
     return response.data;
   } catch (error) {
     console.error("Error fetching current user:", error);
@@ -72,5 +80,25 @@ export async function getProductById(id) {
     return response.data;
   } catch (error) {
     console.error("Error fetching product:", error);
+  }
+}
+
+export async function getCategories() {
+  try {
+    const response = await axios.get(`${BASE_URL}/categories`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+  }
+}
+
+export async function getProductsByCategory(category) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/products/category/${category}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products by category:", error);
   }
 }

@@ -8,6 +8,7 @@ const nextConfig = {
       "images.pexels.com",
       "www.themealdb.com",
       "cdn.dummyjson.com",
+      "dummyjson.com",
     ],
   },
   env: {
