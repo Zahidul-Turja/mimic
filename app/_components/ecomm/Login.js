@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { RxEyeClosed } from "react-icons/rx";
 import { PiEyesFill } from "react-icons/pi";
 
-import { login } from "@/app/_lib/ecomm-services";
+import { login, isLoggedIn } from "@/app/_lib/ecomm-services";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -13,21 +14,29 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const router = useRouter();
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const loggedIn = await isLoggedIn();
+      if (loggedIn) {
+        router.push("/ecomm/products");
+      }
+    };
+    checkLoginStatus();
+  }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    setSuccess("");
     try {
       const response = await login(username, password);
-      setSuccess("Login successful!");
-
+      toast.success(`Welcome Back ${response.firstName}!`, {
+        duration: 5000,
+      });
       router.push("/ecomm/products");
-      console.log("Response:", response);
     } catch (err) {
       setError("Login failed. Please check your credentials.");
       console.error("Error:", err);

@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import { Josefin_Sans } from "next/font/google";
 import "@/app/_styles/globals.css";
 import Header from "./_components/Header";
@@ -24,6 +26,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <main className="h-full w-full">{children}</main>
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

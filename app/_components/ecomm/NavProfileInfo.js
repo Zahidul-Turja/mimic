@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import toast from "react-hot-toast";
 import { MdLogout } from "react-icons/md";
 
 import { getCurrentUser, logout } from "@/app/_lib/ecomm-services";
@@ -49,6 +50,9 @@ function NavProfileInfo({ setIsUserLoggedIn }) {
           onClick={() => {
             logout();
             setIsUserLoggedIn(false);
+            toast.success("Logged out successfully!", {
+              duration: 3000,
+            });
           }}
         />
       </div>
