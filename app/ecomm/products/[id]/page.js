@@ -1,4 +1,5 @@
 import BoundingBox from "@/app/_components/BoundingBox";
+import NavBar from "@/app/_components/ecomm/NavBar";
 import ProductPage from "@/app/_components/ecomm/ProductPage";
 
 export const metadata = {
@@ -8,9 +9,12 @@ export const metadata = {
 
 function Page() {
   return (
-    <BoundingBox>
-      <ProductPage />
-    </BoundingBox>
+    <>
+      {/* <NavBar /> */}
+      <BoundingBox>
+        <ProductPage />
+      </BoundingBox>
+    </>
   );
 }
 

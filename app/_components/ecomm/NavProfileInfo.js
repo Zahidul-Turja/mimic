@@ -6,7 +6,7 @@ import { MdLogout } from "react-icons/md";
 
 import { getCurrentUser, logout } from "@/app/_lib/ecomm-services";
 
-function NavProfileInfo() {
+function NavProfileInfo({ setIsUserLoggedIn }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -46,7 +46,10 @@ function NavProfileInfo() {
         </div>
         <MdLogout
           className="cursor-pointer text-2xl"
-          onClick={() => logout()}
+          onClick={() => {
+            logout();
+            setIsUserLoggedIn(false);
+          }}
         />
       </div>
     </div>
