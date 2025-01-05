@@ -85,7 +85,7 @@ export async function getProductById(id) {
 
 export async function getCategories() {
   try {
-    const response = await axios.get(`${BASE_URL}/categories`);
+    const response = await axios.get(`${BASE_URL}/products/categories`);
     return response.data;
   } catch (error) {
     console.error("Error fetching categories:", error);
@@ -94,6 +94,7 @@ export async function getCategories() {
 
 export async function getProductsByCategory(category) {
   try {
+    if (category == "all") return getProducts();
     const response = await axios.get(
       `${BASE_URL}/products/category/${category}`,
     );

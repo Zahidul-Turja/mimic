@@ -7,10 +7,15 @@ import { BiMinus } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 
 import Spinner from "../Spinner";
-import { getProducts } from "@/app/_lib/ecomm-services";
+import {
+  getProducts,
+  getCategories,
+  getProductsByCategory,
+} from "@/app/_lib/ecomm-services";
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,6 +23,8 @@ function ProductsList() {
       try {
         setLoading(true);
         const data = await getProducts();
+        const categories = await getCategories();
+        setCategory(categories);
         setProducts(data.products);
         console.log("Products fetched:", data);
       } catch (error) {
@@ -29,19 +36,50 @@ function ProductsList() {
 
     fetchProducts();
   }, []);
+
+  function handleCategoryChange(e) {
+    async function fetchProductsByCategory() {
+      try {
+        // setLoading(true);
+        const data = await getProductsByCategory(e.target.value);
+        setProducts(data.products);
+        console.log("Products fetched:", data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProductsByCategory();
+  }
+
   return (
     <div>
       {loading ? (
         <Spinner />
       ) : (
         <div>
+          <div className="flex w-full place-content-end items-center gap-4">
+            <select
+              className="w-1/6 cursor-pointer rounded-md bg-gray-800 p-3 px-4 text-white outline-none"
+              onChange={handleCategoryChange}
+            >
+              <option value="all">All</option>
+              {category.map((cat) => (
+                <option key={cat.slug} value={cat.slug}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="group my-8 grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products &&
               products.map((product) => (
                 <Link
                   href={`/ecomm/products/${product.id}`}
                   key={product.id}
-                  className="col-span-1 flex flex-col justify-between rounded-lg border border-gray-500 px-4 py-4 transition-all duration-300 group-hover:opacity-50 hover:scale-105 hover:!opacity-100 hover:shadow-lg"
+                  className="col-span-1 flex flex-col justify-between rounded-lg border border-gray-500 px-4 py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <div className="flex flex-col gap-2 text-left">
                     <div className="relative h-72 w-full overflow-hidden rounded-t-lg">
@@ -52,7 +90,7 @@ function ProductsList() {
                         height={700}
                         className="h-full w-full bg-gradient-to-tr"
                       />
-                      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-slate-800 to-slate-700"></div>
+                      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-gray-400 to-gray-700"></div>
                     </div>
                     <div>
                       <h3 className="truncate text-lg">{product.title}</h3>
