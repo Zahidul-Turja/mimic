@@ -103,3 +103,12 @@ export async function getProductsByCategory(category) {
     console.error("Error fetching products by category:", error);
   }
 }
+
+export async function searchProducts(query) {
+  try {
+    const response = await axios.get(`${BASE_URL}/products/search?q=${query}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error searching products:", error);
+  }
+}

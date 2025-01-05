@@ -30,7 +30,7 @@ function NavBar() {
         </div>
 
         <div className="flex items-center gap-10">
-          <SearchInput />
+          {/* <SearchInput /> */}
           {isUserLoggedIn ? (
             <NavProfileInfo setIsUserLoggedIn={setIsUserLoggedIn} />
           ) : (
