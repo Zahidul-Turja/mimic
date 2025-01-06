@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BiMinus } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
+import { CiShoppingCart } from "react-icons/ci";
 
 import Spinner from "../Spinner";
 import {
@@ -18,6 +19,9 @@ import {
 function ProductsList() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [numPages, setNumPages] = useState(0);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +33,10 @@ function ProductsList() {
         const categories = await getCategories();
         setCategory(categories);
         setProducts(data.products);
+        setTotalItems(data.total);
+        setNumPages(Math.ceil(data.total / data.limit));
         console.log("Products fetched:", data);
+        console.log("Number of pages:", Math.ceil(data.total / data.limit));
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -133,6 +140,15 @@ function ProductsList() {
                           className="h-full w-full bg-gradient-to-tr"
                         />
                         <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-gray-400 to-gray-700"></div>
+                        <div
+                          className="absolute right-2 top-2 rounded-full border border-white p-1 text-xl text-white"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setCart([...cart, product]);
+                          }}
+                        >
+                          <CiShoppingCart />
+                        </div>
                       </div>
                       <div>
                         <h3 className="truncate text-lg">{product.title}</h3>
@@ -161,12 +177,30 @@ function ProductsList() {
                   </Link>
                 ))}
             </div>
-            <div className="my-8 flex justify-center gap-4">
+            <div className="mb-8 mt-16 flex justify-center gap-4">
               <button>Prev</button>
+              {numPages &&
+                Array.from({ length: numPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={"rounded-sm bg-slate-600 px-4 py-1"}
+                    >
+                      {page}
+                    </button>
+                  ),
+                )}
               <button>Next</button>
             </div>
           </>
         )}
+      </div>
+      <div className="fixed bottom-4 right-12 rounded-full border-2 border-slate-100 p-2 text-slate-100">
+        <CiShoppingCart className="text-3xl" />
+        <p className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-slate-50 font-semibold text-slate-900">
+          {cart.length}
+        </p>
       </div>
     </div>
   );

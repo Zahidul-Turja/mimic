@@ -15,7 +15,6 @@ export default function Login() {
   const [showUsers, setShowUsers] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -32,7 +31,6 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
     try {
       const response = await login(username, password);
       toast.success(`Welcome Back ${response.firstName}!`, {
@@ -40,7 +38,9 @@ export default function Login() {
       });
       router.push("/ecomm/products");
     } catch (err) {
-      setError("Login failed. Please check your credentials.");
+      toast.error("Login failed. Please check your credentials.", {
+        duration: 3000,
+      });
       console.error("Error:", err);
     } finally {
       setLoading(false);
@@ -64,14 +64,13 @@ export default function Login() {
         <h2 className="border-b-2 border-primary-300 pb-2 text-2xl font-bold">
           Login
         </h2>
-        {error && <p className="error-message">{error}</p>}
 
-        <p
+        <a
           onClick={() => router.push("/ecomm/products")}
-          className="mb-0 mt-4 cursor-pointer text-right text-sm font-semibold text-primary-200"
+          className="mb-0 ml-auto mt-4 block w-fit cursor-pointer border-b border-primary-200 text-sm font-light text-primary-200"
         >
-          Continue without account
-        </p>
+          Continue without any account
+        </a>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex flex-col">
@@ -129,15 +128,19 @@ export default function Login() {
       </div>
       <div
         className={`absolute right-0 top-0 h-screen w-screen bg-black/50 ${showUsers ? "block" : "hidden"}`}
+        onClick={() => setShowUsers(false)}
       >
         <div
-          className="absolute right-14 top-24 cursor-pointer rounded-full bg-primary-100 p-2 text-2xl text-primary-900"
+          className="absolute right-14 top-24 cursor-pointer rounded-full bg-primary-100 p-2 text-2xl text-primary-900 transition-opacity duration-200 hover:opacity-55"
           onClick={() => setShowUsers(false)}
         >
           <RxCross2 />
         </div>
 
-        <div className="mx-auto mt-28 h-[70%] w-[25%] overflow-y-scroll rounded-md bg-primary-100 px-8 py-4">
+        <div
+          className="mx-auto mt-28 h-[70%] w-[25%] overflow-y-scroll rounded-md bg-primary-100 px-8 py-4"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="flex items-center justify-between px-2 py-4 text-base font-bold text-primary-900">
             <h3>Username</h3>
             <h3>Password</h3>
