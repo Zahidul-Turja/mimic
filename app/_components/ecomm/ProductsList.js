@@ -59,6 +59,9 @@ function ProductsList() {
 
   function handleSearch(e) {
     e.preventDefault();
+    if (!e.target[0].value.trim().length <= 3) {
+      return;
+    }
     async function fetchProductsBySearch() {
       try {
         setLoading(true);
@@ -79,7 +82,10 @@ function ProductsList() {
     <div>
       <div>
         <div className="flex w-full place-content-end items-center justify-between gap-4">
-          <form className="relative w-2/6" onSubmit={(e) => handleSearch(e)}>
+          <form
+            className="relative w-[20%] transition-all duration-300 focus-within:w-[25%]"
+            onSubmit={(e) => handleSearch(e)}
+          >
             <input
               type="text"
               placeholder="Search"

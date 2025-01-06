@@ -31,6 +31,15 @@ export async function login(username, password) {
   }
 }
 
+export async function getAllUsers() {
+  try {
+    const response = await axios.get(`${BASE_URL}/users`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+  }
+}
+
 export async function logout() {
   try {
     window.localStorage.removeItem("access_token");
