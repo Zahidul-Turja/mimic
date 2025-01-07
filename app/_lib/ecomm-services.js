@@ -43,7 +43,8 @@ export async function getAllUsers() {
 export async function logout() {
   try {
     window.localStorage.removeItem("access_token");
-    window.localStorage.removeItem("access_token");
+    window.localStorage.removeItem("refresh_token");
+    window.localStorage.removeItem("cart");
   } catch (error) {
     console.error("Logout failed:", error.response?.data || error.message);
     return false;
@@ -52,7 +53,7 @@ export async function logout() {
   return true;
 }
 
-export async function isLoggedIn() {
+export function isLoggedIn() {
   const accessToken = window.localStorage.getItem("access_token");
   const refreshToken = window.localStorage.getItem("refresh_token");
   return !!accessToken && !!refreshToken;
@@ -119,5 +120,65 @@ export async function searchProducts(query) {
     return response.data;
   } catch (error) {
     console.error("Error searching products:", error);
+  }
+}
+
+export async function getCartByUserId(userId) {
+  try {
+    const response = await axios.get(`${BASE_URL}/carts/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+  }
+}
+
+export function addToCartLocal(product) {
+  const cart = window.localStorage.getItem("cart");
+  if (cart) {
+    const parsedCart = JSON.parse(cart);
+    parsedCart.push(product);
+    window.localStorage.setItem("cart", JSON.stringify(parsedCart));
+  } else {
+    window.localStorage.setItem("cart", JSON.stringify([product]));
+  }
+}
+
+export function getCartLocal() {
+  const cart = window.localStorage.getItem("cart");
+  if (cart) {
+    return JSON.parse(cart);
+  } else {
+    return [];
+  }
+}
+
+export function removeFromCartLocal(product) {
+  const cart = window.localStorage.getItem("cart");
+  if (cart) {
+    const parsedCart = JSON.parse(cart);
+    const updatedCart = parsedCart.filter((item) => item.id !== product.id);
+    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+  }
+}
+
+export function clearCartLocal() {
+  window.localStorage.removeItem("cart");
+}
+
+export async function createCart(userId, products) {
+  if (!userId || !Array.isArray(products) || products.length === 0) {
+    console.error("Invalid userId or products data");
+    return null;
+  }
+
+  try {
+    const response = await axios.post(`${BASE_URL}/carts/add`, {
+      userId,
+      products,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating cart:", error);
+    throw error;
   }
 }

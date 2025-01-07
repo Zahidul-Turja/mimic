@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BiMinus } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 import { CiShoppingCart } from "react-icons/ci";
 
@@ -14,9 +15,16 @@ import {
   getCategories,
   getProductsByCategory,
   searchProducts,
+  getCartByUserId,
+  getCartLocal,
+  isLoggedIn,
+  getCurrentUser,
+  addToCartLocal,
 } from "@/app/_lib/ecomm-services";
+import { useRouter } from "next/navigation";
 
 function ProductsList() {
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [cart, setCart] = useState([]);
@@ -25,18 +33,36 @@ function ProductsList() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const router = useRouter();
+
   useEffect(() => {
     async function fetchProducts() {
       try {
         setLoading(true);
         const data = await getProducts();
         const categories = await getCategories();
+        const cartLocal = getCartLocal();
+        if (isLoggedIn()) {
+          const user = await getCurrentUser();
+          console.log("Cart local: ", cartLocal);
+          if (cartLocal.length == 0) {
+            const cartDynamic = await getCartByUserId(user.id);
+            addToCartLocal(cartDynamic.products);
+            setCart(cartDynamic.products);
+          } else {
+            setCart(cartLocal);
+          }
+
+          setUser(user);
+        } else {
+          setCart(cartLocal);
+        }
         setCategory(categories);
         setProducts(data.products);
         setTotalItems(data.total);
         setNumPages(Math.ceil(data.total / data.limit));
-        console.log("Products fetched:", data);
-        console.log("Number of pages:", Math.ceil(data.total / data.limit));
+        // console.log("Products fetched:", data);
+        // console.log("Number of pages:", Math.ceil(data.total / data.limit));
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -53,6 +79,8 @@ function ProductsList() {
         // setLoading(true);
         const data = await getProductsByCategory(e.target.value);
         setProducts(data.products);
+        setTotalItems(data.total);
+        setNumPages(Math.ceil(data.total / data.limit));
         console.log("Products fetched:", data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -66,14 +94,17 @@ function ProductsList() {
 
   function handleSearch(e) {
     e.preventDefault();
-    if (!e.target[0].value.trim().length <= 3) {
+    if (search.trim().length <= 3) {
       return;
     }
+
     async function fetchProductsBySearch() {
       try {
         setLoading(true);
         const data = await searchProducts(e.target[0].value);
         setProducts(data.products);
+        setTotalItems(data.total);
+        setNumPages(Math.ceil(data.total / data.limit));
         console.log("Products fetched:", data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -83,6 +114,14 @@ function ProductsList() {
     }
 
     fetchProductsBySearch();
+  }
+
+  function handleCartClick() {
+    if (user) {
+      router.push("/ecomm/cart");
+    } else {
+      router.push("/ecomm");
+    }
   }
 
   return (
@@ -141,13 +180,15 @@ function ProductsList() {
                         />
                         <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-gray-400 to-gray-700"></div>
                         <div
-                          className="absolute right-2 top-2 rounded-full border border-white p-1 text-xl text-white"
+                          className="absolute right-2 top-2 rounded-full border-2 border-white p-2 text-xl text-white transition-all duration-200 hover:cursor-pointer hover:bg-gray-900"
                           onClick={(e) => {
                             e.preventDefault();
                             setCart([...cart, product]);
+                            addToCartLocal(product);
+                            console.log(cart);
                           }}
                         >
-                          <CiShoppingCart />
+                          <FiShoppingCart />
                         </div>
                       </div>
                       <div>
@@ -177,7 +218,9 @@ function ProductsList() {
                   </Link>
                 ))}
             </div>
-            <div className="mb-8 mt-16 flex justify-center gap-4">
+            <div
+              className={`mb-8 mt-16 flex justify-center gap-4 ${numPages === 1 ? "hidden" : ""}`}
+            >
               <button>Prev</button>
               {numPages &&
                 Array.from({ length: numPages }, (_, i) => i + 1).map(
@@ -196,7 +239,10 @@ function ProductsList() {
           </>
         )}
       </div>
-      <div className="fixed bottom-4 right-12 rounded-full border-2 border-slate-100 p-2 text-slate-100">
+      <div
+        className={`fixed bottom-12 right-12 cursor-pointer rounded-full border-2 border-slate-100 bg-gray-900 p-2 text-slate-100 transition-all duration-300 hover:bottom-14 hover:scale-110 ${cart.length === 0 ? "hidden" : ""}`}
+        onClick={handleCartClick}
+      >
         <CiShoppingCart className="text-3xl" />
         <p className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-slate-50 font-semibold text-slate-900">
           {cart.length}

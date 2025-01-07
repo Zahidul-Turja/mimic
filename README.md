@@ -6,8 +6,12 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
 
 - **E-Commerce Section**:
 
+  - Authentication using JWT token
   - Product listing, product details, and navigation.
   - Dynamic routing for individual products.
+  - Search product
+  - Filter by category
+  - Add to cart
 
 - **Harry Potter World**:
 
@@ -18,10 +22,12 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
 
   - Browse recipes by category.
   - View detailed recipe pages.
+  - Filter meal/recipe by category
 
 - **Media Gallery**:
 
   - Photo and video galleries with categories.
+  - Search photots and videos with prompt
 
 - **Quotes Section**:
   - Display and explore inspiring quotes.
