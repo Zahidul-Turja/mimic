@@ -7,11 +7,11 @@ import { FaStar } from "react-icons/fa";
 import { RxDimensions } from "react-icons/rx";
 import { GiWeight } from "react-icons/gi";
 
-import { getProductById } from "@/app/_lib/ecomm-services";
 import { BiMinus } from "react-icons/bi";
 import Reviews from "./Reviews";
 import ProductImages from "./ProductImages";
 import ProductHighlightsRow from "./ProductHighlightsRow";
+import { getProductById, addToCartLocal } from "@/app/_lib/ecomm-services";
 
 function ProductPage() {
   const { id } = useParams();
@@ -96,7 +96,10 @@ function ProductPage() {
                 <span>{product.discountPercentage}%</span>
               </h4>
             </div>
-            <button className="rounded-lg bg-primary-800 px-4 py-2 text-white">
+            <button
+              className="rounded-lg bg-primary-800 px-4 py-2 text-white"
+              onClick={addToCartLocal}
+            >
               {/* <CiShoppingCart className="text-xl font-bold" /> */}
               <span>Add to cart</span>
             </button>

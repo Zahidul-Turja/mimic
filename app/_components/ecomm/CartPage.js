@@ -1,58 +1,85 @@
 "use client";
 
-import { getCartLocal } from "@/app/_lib/ecomm-services";
 import { useEffect, useState } from "react";
 
+import CartProducts from "./CartProducts";
+import CheckoutCard from "./CheckoutCard";
+import Spinner from "../Spinner";
+import {
+  createCart,
+  getCartLocal,
+  getCurrentUser,
+} from "@/app/_lib/ecomm-services";
+
 function CartPage() {
-  const [cartLocal, setCartLocal] = useState();
+  const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState();
+  const [total, setTotal] = useState(0.0);
+  const [discountedTotal, setDiscountedTotal] = useState(0.0);
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    const cart = getCartLocal();
+    const processCart = async () => {
+      try {
+        setLoading(true);
+        // Step 1: Fetch local cart data
+        const cart = getCartLocal(); // Assume this function returns the cart data
+        const currentUser = await getCurrentUser();
+        setUser(currentUser);
 
-    // Process the cart to combine duplicates
-    const processedCart = cart.reduce((acc, product) => {
-      const existingProduct = acc.find((item) => item.id === product.id);
-      if (existingProduct) {
-        // Increase the quantity if the product already exists
-        existingProduct.quantity =
-          (existingProduct.quantity || 1) + (product.quantity || 1);
-      } else {
-        // Add the product to the accumulator with a default quantity of 1
-        acc.push({ ...product, quantity: product.quantity || 1 });
+        // Step 2: Group products by ID and calculate quantities
+        const productMap = cart.reduce((acc, product) => {
+          if (acc[product.id]) {
+            acc[product.id].quantity += 1; // Increase quantity for duplicates
+          } else {
+            acc[product.id] = { id: product.id, quantity: 1 };
+          }
+          return acc;
+        }, {});
+
+        // Step 3: Transform the grouped data into an array
+        const products = Object.values(productMap);
+
+        console.log("Processed products for API:", products);
+
+        // Step 4: Call the API with the processed data
+        const userId = currentUser.id;
+        const cartData = await createCart(userId, products);
+        setCart(cartData.products);
+        setTotal(cartData.total);
+        setDiscountedTotal(cartData.discountedTotal);
+
+        // console.log("Cart created successfully:", cartData);
+        // console.log("Discounted Total:", cartData.discountedTotal);
+        // console.log("Total:", cartData.total);
+        console.log("User: ", currentUser);
+      } catch (error) {
+        console.error("Error processing cart:", error.message);
+      } finally {
+        setLoading(false);
       }
-      return acc;
-    }, []);
+    };
 
-    console.log("Processed Cart: ", processedCart);
-
-    // Update the local cart state
-    setCartLocal(processedCart);
+    processCart();
   }, []);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
-    <div className="w-full rounded-md bg-primary-900 px-12 py-12">
-      {cartLocal &&
-        cartLocal.map((product) => {
-          return (
-            <div
-              key={product.id}
-              className="flex items-center gap-4 rounded-md bg-primary-800 p-4"
-            >
-              <div className="relative h-16 w-16 overflow-hidden rounded-md">
-                <img
-                  src={product.thumbnail}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold">{product.name}</h3>
-                <p className="text-sm text-gray-400">{product.description}</p>
-                <p className="text-sm text-gray-400">{product.quantity}</p>
-              </div>
-            </div>
-          );
-        })}
+    <div className="mx-auto grid w-[75%] grid-cols-[60%_37%] items-start justify-between">
+      <CartProducts
+        products={cart}
+        total={total}
+        discountedTotal={discountedTotal}
+      />
+      <CheckoutCard
+        products={cart}
+        user={user}
+        total={total}
+        discountedTotal={discountedTotal}
+      />
     </div>
   );
 }
