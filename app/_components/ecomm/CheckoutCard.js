@@ -1,7 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { LiaShippingFastSolid } from "react-icons/lia";
 
+import { clearCartLocal } from "@/app/_lib/ecomm-services";
+
 function CheckoutCard({ products, user, total, discountedTotal }) {
+  const router = useRouter();
+
   return (
     <div className="w-full overflow-auto rounded-lg bg-primary-900 p-8 text-left">
       <h1 className="mb-4 text-lg font-bold">Order Details</h1>
@@ -106,7 +113,13 @@ function CheckoutCard({ products, user, total, discountedTotal }) {
         >
           Continue shopping
         </Link>
-        <button className="relative rounded-lg bg-gradient-to-t from-green-900 to-green-700 px-6 py-2 text-lg font-semibold">
+        <button
+          className="relative rounded-lg bg-gradient-to-t from-green-900 to-green-700 px-6 py-2 text-lg font-semibold"
+          onClick={() => {
+            clearCartLocal();
+            router.push("/ecomm/cart/success");
+          }}
+        >
           Check out
         </button>
       </div>
