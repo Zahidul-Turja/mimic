@@ -154,7 +154,9 @@ export default function Login() {
                 >
                   <div className="flex flex-col text-left">
                     <span className="text-sm font-bold">{user.username}</span>
-                    <span className="text-xs font-normal">{user.role}</span>
+                    <span className="text-xs font-normal">
+                      {user.company.title}
+                    </span>
                   </div>
                   <span className="text-sm font-semibold">{user.password}</span>
                 </li>

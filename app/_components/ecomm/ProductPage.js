@@ -12,6 +12,7 @@ import Reviews from "./Reviews";
 import ProductImages from "./ProductImages";
 import ProductHighlightsRow from "./ProductHighlightsRow";
 import { getProductById, addToCartLocal } from "@/app/_lib/ecomm-services";
+import toast from "react-hot-toast";
 
 function ProductPage() {
   const { id } = useParams();
@@ -98,7 +99,10 @@ function ProductPage() {
             </div>
             <button
               className="rounded-lg bg-primary-800 px-4 py-2 text-white"
-              onClick={addToCartLocal}
+              onClick={() => {
+                toast.success("Product added to cart", { duration: 3000 });
+                addToCartLocal(product);
+              }}
             >
               {/* <CiShoppingCart className="text-xl font-bold" /> */}
               <span>Add to cart</span>

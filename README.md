@@ -11,7 +11,8 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
   - Dynamic routing for individual products.
   - Search product
   - Filter by category
-  - Add to cart
+  - Pagination
+  - Add to cart functionality
 
 - **Harry Potter World**:
 

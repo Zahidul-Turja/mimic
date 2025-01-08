@@ -75,9 +75,9 @@ export async function getCurrentUser() {
   }
 }
 
-export async function getProducts() {
+export async function getProducts(skip = 0) {
   try {
-    const response = await axios.get(`${BASE_URL}/products`);
+    const response = await axios.get(`${BASE_URL}/products?skip=${skip}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);

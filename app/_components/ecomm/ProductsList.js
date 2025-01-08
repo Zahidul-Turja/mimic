@@ -8,6 +8,7 @@ import { FaStar } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 import { CiShoppingCart } from "react-icons/ci";
+import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 
 import Spinner from "../Spinner";
 import {
@@ -32,6 +33,8 @@ function ProductsList() {
   const [numPages, setNumPages] = useState(0);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const router = useRouter();
 
@@ -124,6 +127,25 @@ function ProductsList() {
     } else {
       router.push("/ecomm");
     }
+  }
+
+  function handlePageChange(page) {
+    setCurrentPage(page);
+    const skip = (page - 1) * 30;
+    async function fetchProductsByPage() {
+      try {
+        setLoading(true);
+        const data = await getProducts(skip);
+        setProducts(data.products);
+        console.log("Products fetched:", data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProductsByPage();
   }
 
   return (
@@ -222,22 +244,38 @@ function ProductsList() {
                 ))}
             </div>
             <div
-              className={`mb-8 mt-16 flex justify-center gap-4 ${numPages === 1 ? "hidden" : ""}`}
+              className={`mb-8 mt-16 flex justify-center gap-4 text-primary-500 ${numPages === 1 ? "hidden" : ""}`}
             >
-              <button>Prev</button>
+              <button
+                onClick={() => {
+                  if (currentPage > 1) handlePageChange(currentPage - 1);
+                }}
+                className="flex items-center gap-1 hover:text-primary-200"
+              >
+                <IoChevronBackOutline className="text-2xl" />
+                Prev
+              </button>
               {numPages &&
                 Array.from({ length: numPages }, (_, i) => i + 1).map(
                   (page) => (
                     <button
                       key={page}
                       onClick={() => handlePageChange(page)}
-                      className={"rounded-sm bg-slate-600 px-4 py-1"}
+                      className={`rounded-sm border-2 px-6 py-1 ${page === currentPage ? "border-primary-200 text-white" : "border-primary-500 hover:bg-primary-800"}`}
                     >
                       {page}
                     </button>
                   ),
                 )}
-              <button>Next</button>
+              <button
+                onClick={() => {
+                  if (currentPage < numPages) handlePageChange(currentPage + 1);
+                }}
+                className="flex items-center gap-1 hover:text-primary-200"
+              >
+                Next
+                <IoChevronForwardOutline className="text-2xl" />
+              </button>
             </div>
           </>
         )}
