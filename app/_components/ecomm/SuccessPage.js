@@ -22,7 +22,6 @@ function SuccessPage() {
           <TiTick className="rounded-full bg-green-500 text-white" />
           <h1>Purchase Successful</h1>
         </div>
-
         <Link
           href={"/ecomm/products"}
           className="border-b-2 border-primary-200 px-2 py-1 text-lg text-primary-200"

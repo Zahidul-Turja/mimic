@@ -45,10 +45,14 @@ function ProductsList() {
         if (isLoggedIn()) {
           const user = await getCurrentUser();
           console.log("Cart local: ", cartLocal);
-          if (cartLocal.length == 0) {
+          if (!cartLocal || cartLocal.length === 0) {
             const cartDynamic = await getCartByUserId(user.id);
-            addToCartLocal(cartDynamic.products);
+            cartDynamic.products.map((product) => {
+              addToCartLocal(product);
+            });
+            console.log("Product added to local cart");
             setCart(cartDynamic.products);
+            console.log("Cart dynamic: ", cartDynamic.products);
           } else {
             setCart(cartLocal);
           }
@@ -61,8 +65,6 @@ function ProductsList() {
         setProducts(data.products);
         setTotalItems(data.total);
         setNumPages(Math.ceil(data.total / data.limit));
-        // console.log("Products fetched:", data);
-        // console.log("Number of pages:", Math.ceil(data.total / data.limit));
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -183,7 +185,8 @@ function ProductsList() {
                           className="absolute right-2 top-2 rounded-full border-2 border-white p-2 text-xl text-white transition-all duration-200 hover:cursor-pointer hover:bg-gray-900"
                           onClick={(e) => {
                             e.preventDefault();
-                            setCart([...cart, product]);
+                            if (cart) setCart([...cart, product]);
+                            else setCart([product]);
                             addToCartLocal(product);
                             console.log(cart);
                           }}
@@ -240,12 +243,12 @@ function ProductsList() {
         )}
       </div>
       <div
-        className={`fixed bottom-12 right-12 cursor-pointer rounded-full border-2 border-slate-100 bg-gray-900 p-2 text-slate-100 transition-all duration-300 hover:bottom-14 hover:scale-110 ${cart.length === 0 ? "hidden" : ""}`}
+        className={`fixed bottom-12 right-12 cursor-pointer rounded-full border-2 border-slate-100 bg-gray-900 p-2 text-slate-100 transition-all duration-300 hover:bottom-14 hover:scale-110 ${!cart ? "hidden" : ""}`}
         onClick={handleCartClick}
       >
         <CiShoppingCart className="text-3xl" />
         <p className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-slate-50 font-semibold text-slate-900">
-          {cart.length}
+          {cart ? cart.length : 0}
         </p>
       </div>
     </div>

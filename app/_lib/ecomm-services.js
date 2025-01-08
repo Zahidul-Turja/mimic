@@ -148,7 +148,7 @@ export function getCartLocal() {
   if (cart) {
     return JSON.parse(cart);
   } else {
-    return [];
+    return;
   }
 }
 
