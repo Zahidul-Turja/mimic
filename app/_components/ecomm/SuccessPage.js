@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import Confetti from "react-confetti";
 import { TiTick } from "react-icons/ti";
 import { RiShoppingCartLine } from "react-icons/ri";
+import Confetti from "react-confetti";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 function SuccessPage() {
+  const size = useWindowSize();
+
   return (
     <div>
       <Confetti
-        width={window.innerWidth}
-        height={window.innerHeight}
+        width={size.width}
+        height={size.height}
         gravity={0.1}
         style={{ zIndex: 99 }}
         numberOfPieces={700}
