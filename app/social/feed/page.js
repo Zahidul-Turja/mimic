@@ -1,5 +1,6 @@
 import BoundingBox from "@/app/_components/BoundingBox";
 import FeedPage from "@/app/_components/social/FeedPage";
+import NavBar from "@/app/_components/social/NavBar";
 
 export const metadata = {
   title: "Feed",
@@ -8,9 +9,12 @@ export const metadata = {
 
 function Page() {
   return (
-    <BoundingBox>
-      <FeedPage />
-    </BoundingBox>
+    <>
+      <NavBar />
+      <BoundingBox>
+        <FeedPage />
+      </BoundingBox>
+    </>
   );
 }
 

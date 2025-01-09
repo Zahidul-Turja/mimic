@@ -1,9 +1,10 @@
 import Link from "next/link";
+
 import { MdOutlineNavigateNext } from "react-icons/md";
 
 function Comments({ comments }) {
   return (
-    <div className="mb-8 rounded-lg border border-primary-200 bg-black/30 px-4 py-2 text-left">
+    <div className="mb-8 rounded-lg border border-primary-200 bg-black/20 px-4 py-2 text-left">
       <h2 className="border-b border-primary-200/30 pb-2 text-base font-bold">
         Comments
       </h2>
