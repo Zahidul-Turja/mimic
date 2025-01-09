@@ -39,8 +39,8 @@ function PostCard({ post }) {
   }
 
   return (
-    <>
-      <div className="my-4 w-full rounded-lg bg-primary-900 px-8 py-4">
+    <div className="my-12">
+      <div className="mb-4 w-full rounded-lg bg-primary-900 px-8 py-4">
         <div className="flex w-full items-start gap-3">
           <Link
             href={`/social/user/${author?.id}`}
@@ -104,7 +104,7 @@ function PostCard({ post }) {
         </div>
       </div>
       {comments.length > 0 && <Comments comments={comments} />}
-    </>
+    </div>
   );
 }
 

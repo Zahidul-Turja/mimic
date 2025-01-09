@@ -83,7 +83,7 @@ export async function getUserById(id) {
   }
 }
 
-export async function getAllPosts(limit = 10, skip = 0) {
+export async function getPosts(limit = 10, skip = 0) {
   try {
     const response = await axios.get(
       `${BASE_URL}/posts?limit=${limit}&skip=${skip}`,
