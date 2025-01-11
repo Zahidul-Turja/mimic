@@ -1,5 +1,11 @@
+import UserProfile from "@/app/_components/social/UserProfile";
+
 function Page() {
-  return <div>page</div>;
+  return (
+    <div>
+      <UserProfile isCurrentUser={false} />
+    </div>
+  );
 }
 
 export default Page;
