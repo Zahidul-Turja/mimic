@@ -34,13 +34,13 @@ function Page() {
   return (
     <BoundingBox>
       <h1
-        className={`text-4xl font-bold tracking-wide ${dancingScript.className}`}
+        className={`text-2xl font-bold tracking-wide md:text-4xl ${dancingScript.className}`}
       >
         Recipes for{" "}
         <span className={`${dancingScript.className}`}>{category}</span>
       </h1>
       <p
-        className={`mx-auto my-4 w-[50%] text-lg font-light ${raleway.className}`}
+        className={`mx-auto my-4 text-base font-light md:w-[50%] md:text-lg ${raleway.className}`}
       >
         All available recipes for {category}. Please find a recipe you like and
         let me know what you think.
@@ -48,7 +48,7 @@ function Page() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="my-8 grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {recipes &&
             recipes.map((recipe) => (
               <Link

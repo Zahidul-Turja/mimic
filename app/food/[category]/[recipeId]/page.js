@@ -35,7 +35,7 @@ function Page() {
   return (
     <BoundingBox>
       <h1
-        className={`mb-8 text-4xl font-bold tracking-widest ${dancingScript.className}`}
+        className={`mb-8 text-3xl font-bold tracking-widest md:text-4xl ${dancingScript.className}`}
       >
         <span className={`text-primary-300 ${greatVibes.className}`}>
           Recipe for{" "}
@@ -48,8 +48,8 @@ function Page() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex justify-between gap-12">
-          <div className="w-[30%]">
+        <div className="flex flex-col justify-between gap-12 md:flex-row">
+          <div className="md:w-[30%]">
             <div className="relative h-[26rem] w-full rounded-lg border-2 border-primary-200 bg-slate-950 p-8">
               <Image
                 src={recipe.strMealThumb}
@@ -71,15 +71,15 @@ function Page() {
               </h2>
             </div>
           </div>
-          <div className={`w-[70%] ${raleway.className}`}>
-            <h2 className="text-left text-xl font-semibold">
+          <div className={`w-full md:w-[70%] ${raleway.className}`}>
+            <h2 className="text-center text-xl font-semibold md:text-left">
               To Make {recipe.strMeal},
             </h2>
-            <p className="my-2 w-[90%] text-left text-sm leading-6 tracking-wide">
+            <p className="my-2 text-justify text-sm leading-6 tracking-wide md:w-[90%] md:text-left">
               {recipe.strInstructions}
             </p>
 
-            <h3 className="my-2 flex text-left font-semibold">
+            <h3 className="my-2 flex items-center text-center text-sm font-semibold md:text-left">
               Watch step by step guide on{" "}
               <a
                 href={recipe.strYoutube}
@@ -92,7 +92,7 @@ function Page() {
             <h3 className="mb-4 mt-8 text-left text-xl font-semibold">
               Table of Measurements
             </h3>
-            <ul className="w-[90%] rounded-lg border border-primary-200 text-left text-sm leading-6 tracking-wide">
+            <ul className="rounded-lg border border-primary-200 text-left text-sm leading-6 tracking-wide md:w-[90%]">
               <li
                 className={`flex items-center justify-between gap-2 border-b border-primary-200 text-lg font-bold`}
               >
