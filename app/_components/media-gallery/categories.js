@@ -38,7 +38,7 @@ function Categories({
   };
 
   return (
-    <ul className="flex flex-wrap justify-center gap-4 text-center font-semibold">
+    <ul className="hidden flex-wrap justify-center gap-4 text-center font-semibold md:w-full lg:flex">
       {image_categories.map((category, key) => (
         <li
           key={key}

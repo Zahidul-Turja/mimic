@@ -9,7 +9,7 @@ function Page() {
   return (
     <BoundingBox>
       <h1 className="text-3xl font-bold tracking-wide">Mimic Gallery</h1>
-      <p className="mx-auto my-4 w-[50%] text-lg">
+      <p className="mx-auto my-4 w-full text-lg lg:w-[50%]">
         The best free stock photos, royalty free images & videos shared by
         creators to download and use in your next project.
       </p>

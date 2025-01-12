@@ -144,7 +144,7 @@ function Gallery() {
           <option value="photos">Photos</option>
           <option value="videos">Videos</option>
         </select>
-        <div className="relative my-4 ml-6 mr-auto w-[30%] items-center transition-all duration-500 focus-within:w-[32%] hover:w-[32%]">
+        <div className="relative my-4 ml-6 mr-auto w-[70%] items-center transition-all duration-500 lg:w-[30%] lg:focus-within:w-[32%] lg:hover:w-[32%]">
           <form action="submit" onSubmit={handleSearchSubmit}>
             <input
               type="text"
