@@ -37,7 +37,7 @@ function Navigation() {
 
       <div
         ref={sidebarRef}
-        className={`4 fixed top-0 z-50 h-screen bg-primary-50 px-7 py-20 text-primary-950 transition-all duration-500 ${
+        className={`fixed top-0 z-50 h-screen bg-primary-50 px-7 py-20 text-primary-950 transition-all duration-500 ease-in-out ${
           open ? "right-0 rounded-none" : "-right-full rounded-l-3xl"
         }`}
       >
