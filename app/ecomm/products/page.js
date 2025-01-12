@@ -14,7 +14,9 @@ function Page() {
       <NavBar />
       <HeaderSection />
       <BoundingBox>
-        <h1 className="text-3xl font-bold tracking-wide">Products</h1>
+        <h1 className="mb-3 text-lg font-bold tracking-wide md:mb-0 md:text-3xl">
+          Products
+        </h1>
         <ProductsList />
       </BoundingBox>
     </main>

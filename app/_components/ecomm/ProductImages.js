@@ -7,7 +7,7 @@ function ProductImages({ images }) {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
-    <div className="w-[50%]">
+    <div className="md:w-[50%]">
       <div className="relative max-h-[350px] w-full cursor-zoom-in overflow-hidden rounded-lg border-2 border-gray-400 bg-gray-400">
         <Image
           key={selectedImage}

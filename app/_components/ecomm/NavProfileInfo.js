@@ -63,7 +63,7 @@ function NavProfileInfo({ setIsUserLoggedIn }) {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="absolute left-1/2 top-1/2 w-[30%] -translate-x-1/2 -translate-y-32 rounded-lg bg-primary-100 px-8 py-6"
+            className="absolute left-1/2 top-1/2 w-[90%] -translate-x-1/2 -translate-y-32 rounded-lg bg-primary-100 px-8 py-6 md:w-[30%]"
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-justify text-base text-primary-950">

@@ -10,10 +10,12 @@ function Reviews({ reviews, rating }) {
   }
 
   return (
-    <div className="mx-auto my-4 w-full rounded-md bg-primary-900 px-12 py-12">
-      <h1 className="my-4 text-2xl font-semibold tracking-wide">Reviews</h1>
-      <div className="flex items-center gap-2">
-        <span className="my-4 flex items-center gap-1 text-2xl">
+    <div className="mx-auto my-4 w-full rounded-md bg-primary-900 px-4 py-2 md:px-12 md:py-12">
+      <h1 className="my-1 text-2xl font-semibold tracking-wide md:my-4">
+        Reviews
+      </h1>
+      <div className="flex items-center md:gap-2">
+        <span className="flex items-center gap-1 text-lg md:my-4 md:text-2xl">
           {Array.from({ length: filledStars }, (_, i) => (
             <FaStar key={i} className="text-yellow-400" />
           ))}
@@ -37,11 +39,11 @@ function Reviews({ reviews, rating }) {
           Rated by {reviews.length} users
         </h3> */}
       </div>
-      <div className="mx-auto my-4">
+      <div className="mx-auto md:my-4">
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="my-8 rounded-md bg-primary-950 px-8 py-4 text-left"
+            className="my-4 rounded-md bg-primary-950 px-4 py-4 text-left md:my-8 md:px-8 md:py-4"
           >
             <div className="-mb-1 flex items-center justify-between">
               <p className="font-bold">{review.reviewerName}</p>
@@ -62,7 +64,9 @@ function Reviews({ reviews, rating }) {
                 {review.rating}
               </h2> */}
             </div>
-            <p className="my-4 text-lg">{review.comment}</p>
+            <p className="mt-2 text-base md:my-4 md:text-lg">
+              {review.comment}
+            </p>
           </div>
         ))}
       </div>

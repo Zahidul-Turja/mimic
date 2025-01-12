@@ -40,8 +40,8 @@ function ProductPage() {
   }
 
   return (
-    <div className="mx-auto w-[80%]">
-      <div className="flex w-full gap-8 rounded-md bg-primary-900 px-12 py-12">
+    <div className="mx-auto md:w-[80%]">
+      <div className="flex w-full flex-col gap-8 rounded-md bg-primary-900 px-4 py-8 md:flex-row md:px-12 md:py-12">
         <ProductImages images={product.images} />
 
         <div className="w-full text-left">

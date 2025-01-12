@@ -10,7 +10,7 @@ function CheckoutCard({ products, user, total, discountedTotal }) {
   const router = useRouter();
 
   return (
-    <div className="w-full overflow-auto rounded-lg bg-primary-900 p-8 text-left">
+    <div className="w-full overflow-auto rounded-lg bg-primary-900 p-4 text-left md:p-8">
       <h1 className="mb-4 text-lg font-bold">Order Details</h1>
       <div className="mb-4 flex gap-2">
         <div>

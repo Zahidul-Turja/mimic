@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function CartProducts({ products, total, discountedTotal }) {
   return (
-    <div className="w-full overflow-auto rounded-lg bg-primary-900 px-6 py-8">
+    <div className="w-full overflow-auto rounded-lg bg-primary-900 px-2 py-4 md:px-6 md:py-8">
       <h1 className="text-lg font-bold">Products</h1>
       {products &&
         products.map((product) => {
@@ -11,7 +11,7 @@ function CartProducts({ products, total, discountedTotal }) {
               key={product.id}
               className="flex items-center gap-4 border-b border-primary-200 p-4"
             >
-              <div className="relative h-16 w-16 overflow-hidden rounded-md">
+              <div className="relative h-12 w-12 overflow-hidden rounded-md md:h-16 md:w-16">
                 <Image
                   src={product.thumbnail}
                   alt={product.title}
@@ -20,11 +20,17 @@ function CartProducts({ products, total, discountedTotal }) {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="grid w-[70%] grid-cols-[80%_5%_20%_15%] text-left">
-                <h3 className="text-base font-semibold">{product.title}</h3>
-                <p className="text-sm text-gray-400">{product.quantity} x</p>
-                <p className="text-sm text-gray-400">${product.price}</p>
-                <p className="text-center text-sm text-gray-400">
+              <div className="grid grid-cols-[auto_20%_20%_20%] text-left md:w-[70%] md:grid-cols-[80%_5%_20%_15%]">
+                <h3 className="text-sm font-semibold md:text-base">
+                  {product.title}
+                </h3>
+                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
+                  {product.quantity} x
+                </p>
+                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
+                  ${product.price}
+                </p>
+                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
                   ${product.total}
                 </p>
               </div>

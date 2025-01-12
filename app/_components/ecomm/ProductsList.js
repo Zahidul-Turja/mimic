@@ -151,9 +151,9 @@ function ProductsList() {
   return (
     <div>
       <div>
-        <div className="flex w-full place-content-end items-center justify-between gap-4">
+        <div className="flex w-full flex-col place-content-end items-start justify-between gap-4 md:flex-row md:items-center">
           <form
-            className="relative w-[20%] transition-all duration-300 focus-within:w-[25%]"
+            className="relative w-[100%] transition-all duration-300 md:w-[20%] md:focus-within:w-[25%]"
             onSubmit={(e) => handleSearch(e)}
           >
             <input
@@ -170,7 +170,7 @@ function ProductsList() {
             </button>
           </form>
           <select
-            className="w-1/6 cursor-pointer rounded-md bg-gray-800 p-3 px-4 text-white outline-none"
+            className="w-1/2 cursor-pointer rounded-full bg-gray-800 p-3 px-4 text-white outline-none md:w-1/6 md:rounded-md"
             onChange={handleCategoryChange}
           >
             <option value="all">All</option>

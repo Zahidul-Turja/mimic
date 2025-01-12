@@ -68,7 +68,7 @@ function CartPage() {
   }
 
   return (
-    <div className="mx-auto grid w-[75%] grid-cols-[60%_37%] items-start justify-between">
+    <div className="mx-auto grid grid-cols-1 items-start justify-between gap-4 md:w-[75%] md:grid-cols-[60%_37%] md:gap-0">
       <CartProducts
         products={cart}
         total={total}
