@@ -47,7 +47,7 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
     - Harry Potter Movies ([Documentation](https://api.potterdb.com/v1/movies))
     - Houses and Spells ([Documentation](https://github.com/fedeperin/potterapi?tab=readme-ov-file))
 
-## 📂 Directory Structure
+<!-- ## 📂 Directory Structure
 
 ```markdown
 ├── Zahidul-Turja-Mimic/
@@ -157,7 +157,7 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
 │ │ └── vecteezy_user-profile-avatar_11209565.eps
 │ ├── ecomm/
 │ └── harry-potter-world/
-```
+``` -->
 
 ## ⚙️ Installation and Setup
 

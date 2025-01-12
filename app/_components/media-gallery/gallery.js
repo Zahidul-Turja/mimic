@@ -154,14 +154,14 @@ function Gallery() {
             </button>
           </form>
         </div>
-        <Categories
-          setPhotos={setPhotos}
-          setVideos={setVideos}
-          searchText={searchText}
-          setSearchText={setSearchText}
-          setLoading={setLoading}
-        />
       </div>
+      <Categories
+        setPhotos={setPhotos}
+        setVideos={setVideos}
+        searchText={searchText}
+        setSearchText={setSearchText}
+        setLoading={setLoading}
+      />
 
       {searchText && (
         <p className="my-4 w-auto items-start border-b border-primary-100 py-8 text-left text-2xl font-extralight italic">

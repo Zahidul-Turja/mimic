@@ -6,4 +6,7 @@ export const image_categories = [
   "anime",
   "wallpapers",
   "neon",
+  "space",
+  "portrait",
+  "black and white",
 ];
