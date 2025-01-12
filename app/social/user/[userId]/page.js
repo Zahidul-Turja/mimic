@@ -1,3 +1,4 @@
+import NavBar from "@/app/_components/social/NavBar";
 import UserProfile from "@/app/_components/social/UserProfile";
 
 export const metadata = {
@@ -8,6 +9,7 @@ export const metadata = {
 function Page() {
   return (
     <div>
+      <NavBar />
       <UserProfile isCurrentUser={false} />
     </div>
   );
