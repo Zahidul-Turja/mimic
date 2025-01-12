@@ -43,7 +43,7 @@ function UserProfile({ isCurrentUser }) {
 
   return (
     <BoundingBox>
-      <div className="mx-auto grid w-[50%] grid-cols-[17%_84%] items-start justify-between rounded-xl bg-primary-900 px-10 py-4 shadow-lg">
+      <div className="mx-auto grid w-[50%] grid-cols-[17%_84%] items-start justify-between rounded-xl bg-primary-900 px-10 py-8 shadow-lg">
         <div className="relative h-24 w-24 overflow-hidden rounded-full">
           <Image
             src={user.image}
@@ -68,7 +68,30 @@ function UserProfile({ isCurrentUser }) {
           <p className="text-sm font-light">
             Hey, I&apos;m {user.firstName} {user.lastName}.{" "}
             {user.role === "admin" && `I'm an admin at Mimic Shop.`} I am a{" "}
-            {user.age} {user.gender} and I live in {user.address.address}.
+            {user.age} {user.gender} and I live in {user.address.address},{" "}
+            {user.address.city}, {user.address.state}, {user.address.country}. I
+            went to {user.university} and currently working as a{" "}
+            {user.company.title} at {user.company.name}.
+          </p>
+
+          <h3 className="mt-4 text-sm font-bold">Contact Information</h3>
+          <p className="text-sm font-light">
+            Email: {user.email} <br />
+            Phone: {user.phone}
+          </p>
+
+          <h3 className="mt-4 text-sm font-bold">Address</h3>
+          <p className="text-sm font-light">
+            {user.address.address}, {user.address.city}, {user.address.state},{" "}
+            {user.address.country}
+          </p>
+
+          <h3 className="mt-4 text-sm font-bold">Education</h3>
+          <p className="text-sm font-light">{user.university}</p>
+
+          <h3 className="mt-4 text-sm font-bold">Company</h3>
+          <p className="text-sm font-light">
+            {user.company.title} at {user.company.name}
           </p>
         </div>
       </div>
