@@ -52,7 +52,6 @@ export default function Login() {
       const res = await getAllUsers();
       setAllUsers(res.users);
       setShowUsers(true);
-      console.log(res.users);
     } catch (error) {
       console.error("Error fetching users:", error);
     }

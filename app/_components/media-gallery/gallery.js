@@ -30,7 +30,6 @@ function Gallery() {
           });
           setPhotos(response.photos);
           setNextPage((prev) => prev + 1);
-          console.log(response.photos);
         }
         if (type === "videos") {
           const response = await client.videos.popular({
@@ -39,7 +38,6 @@ function Gallery() {
           });
           setVideos(response.videos);
           setNextPage((prev) => prev + 1);
-          console.log(response.videos);
         }
       } catch (err) {
         setError(err.message);
@@ -73,7 +71,6 @@ function Gallery() {
         per_page: 20,
       });
       setPhotos(response.photos);
-      console.log(response.photos);
     }
 
     if (type === "videos") {
@@ -84,7 +81,6 @@ function Gallery() {
         per_page: 20,
       });
       setVideos(response.videos);
-      console.log(response.videos);
     }
 
     setLoading(false);

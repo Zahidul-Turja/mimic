@@ -17,7 +17,6 @@ function FeedPage() {
         setLoading(true);
 
         const response = await getPosts();
-        console.log(response.posts);
         setPosts(response.posts);
       } catch (error) {
         console.error("Error fetching posts:", error);

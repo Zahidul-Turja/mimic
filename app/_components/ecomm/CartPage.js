@@ -40,19 +40,12 @@ function CartPage() {
         // Step 3: Transform the grouped data into an array
         const products = Object.values(productMap);
 
-        console.log("Processed products for API:", products);
-
         // Step 4: Call the API with the processed data
         const userId = currentUser.id;
         const cartData = await createCart(userId, products);
         setCart(cartData.products);
         setTotal(cartData.total);
         setDiscountedTotal(cartData.discountedTotal);
-
-        // console.log("Cart created successfully:", cartData);
-        // console.log("Discounted Total:", cartData.discountedTotal);
-        // console.log("Total:", cartData.total);
-        console.log("User: ", currentUser);
       } catch (error) {
         console.error("Error processing cart:", error.message);
       } finally {

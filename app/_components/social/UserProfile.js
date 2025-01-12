@@ -39,12 +39,10 @@ function UserProfile({ isCurrentUser }) {
     return <Spinner />;
   }
 
-  console.log(user);
-
   return (
     <BoundingBox>
-      <div className="mx-auto grid w-[50%] grid-cols-[17%_84%] items-start justify-between rounded-xl bg-primary-900 px-10 py-8 shadow-lg">
-        <div className="relative h-24 w-24 overflow-hidden rounded-full">
+      <div className="mx-auto grid grid-cols-[15%_80%] items-start justify-between rounded-xl bg-primary-900 px-4 py-6 shadow-lg md:w-[50%] md:grid-cols-[17%_84%] md:px-10 md:py-8">
+        <div className="relative h-16 w-16 overflow-hidden rounded-full md:h-24 md:w-24">
           <Image
             src={user.image}
             alt={user.name}
@@ -65,7 +63,7 @@ function UserProfile({ isCurrentUser }) {
             @{user.username}
           </h3>
 
-          <p className="text-sm font-light">
+          <p className="text-justify text-sm font-light md:text-left">
             Hey, I&apos;m {user.firstName} {user.lastName}.{" "}
             {user.role === "admin" && `I'm an admin at Mimic Shop.`} I am a{" "}
             {user.age} {user.gender} and I live in {user.address.address},{" "}

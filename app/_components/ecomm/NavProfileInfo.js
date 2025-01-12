@@ -19,7 +19,6 @@ function NavProfileInfo({ setIsUserLoggedIn }) {
       try {
         const response = await getCurrentUser();
 
-        console.log("Current user:", response);
         setUser(response);
       } catch (error) {
         console.error("Error fetching current user:", error);

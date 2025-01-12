@@ -19,7 +19,6 @@ function Categories({
         per_page: 20,
       });
       setPhotos(response.photos);
-      console.log(response.photos);
     }
 
     if (type === "videos") {
@@ -30,7 +29,6 @@ function Categories({
         per_page: 20,
       });
       setVideos(response.videos);
-      console.log(response.videos);
     }
 
     setSearchText(searchText);

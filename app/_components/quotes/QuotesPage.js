@@ -18,7 +18,6 @@ function QuotesPage() {
       try {
         setLoading(true);
         const data = await getQuotesList(page);
-        console.log(data.quotes);
         setQuotes(data.quotes);
       } catch (error) {
         console.error("Error fetching quotes:", error);

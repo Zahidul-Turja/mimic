@@ -21,7 +21,7 @@ function SuccessPage() {
       />
 
       <div>
-        <div className="mb-10 mt-24 flex items-center justify-center gap-2 text-4xl font-bold">
+        <div className="mb-4 mt-48 flex items-center justify-center gap-2 text-4xl font-bold md:mb-10 md:mt-24">
           <TiTick className="rounded-full bg-green-500 text-white" />
           <h1>Purchase Successful</h1>
         </div>

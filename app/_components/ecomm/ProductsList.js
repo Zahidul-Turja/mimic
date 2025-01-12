@@ -47,15 +47,12 @@ function ProductsList() {
         const cartLocal = getCartLocal();
         if (isLoggedIn()) {
           const user = await getCurrentUser();
-          console.log("Cart local: ", cartLocal);
           if (!cartLocal || cartLocal.length === 0) {
             const cartDynamic = await getCartByUserId(user.id);
             cartDynamic.products.map((product) => {
               addToCartLocal(product);
             });
-            console.log("Product added to local cart");
             setCart(cartDynamic.products);
-            console.log("Cart dynamic: ", cartDynamic.products);
           } else {
             setCart(cartLocal);
           }
@@ -86,7 +83,6 @@ function ProductsList() {
         setProducts(data.products);
         setTotalItems(data.total);
         setNumPages(Math.ceil(data.total / data.limit));
-        console.log("Products fetched:", data);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -110,7 +106,6 @@ function ProductsList() {
         setProducts(data.products);
         setTotalItems(data.total);
         setNumPages(Math.ceil(data.total / data.limit));
-        console.log("Products fetched:", data);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -137,7 +132,6 @@ function ProductsList() {
         setLoading(true);
         const data = await getProducts(skip);
         setProducts(data.products);
-        console.log("Products fetched:", data);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -210,7 +204,6 @@ function ProductsList() {
                             if (cart) setCart([...cart, product]);
                             else setCart([product]);
                             addToCartLocal(product);
-                            console.log(cart);
                           }}
                         >
                           <FiShoppingCart />

@@ -82,7 +82,7 @@ function PostCard({ post }) {
 
             <div className="mt-4 grid grid-cols-3 border-t border-primary-200/30 py-2 text-center">
               <div className="flex items-center justify-around">
-                <div className="items-cente flex gap-2">
+                <div className="items-cente flex gap-2 text-sm md:text-base">
                   <BiLike />
                   <span>{post.reactions.likes}</span>
                 </div>
@@ -91,11 +91,11 @@ function PostCard({ post }) {
                   <BiDislike />
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-2 border-x border-gray-200/30">
+              <div className="flex items-center justify-center gap-2 border-x border-gray-200/30 text-sm md:text-base">
                 {/* <FaRegComment /> */}
                 <span>Comments ({comments.length || 0})</span>
               </div>
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-2 text-sm md:text-base">
                 {/* <PiEyes /> */}
                 <span>Views ({post.views})</span>
               </div>
