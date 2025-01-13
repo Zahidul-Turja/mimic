@@ -30,8 +30,10 @@ function Page() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className={`flex h-[75vh] gap-8 ${imFellEnglish.className}`}>
-          <div className="relative h-[95%] w-80 rounded-lg">
+        <div
+          className={`flex h-full flex-col gap-2 md:h-[75vh] md:flex-row md:gap-8 ${imFellEnglish.className}`}
+        >
+          <div className="relative h-[65vh] w-full rounded-lg md:h-[95%] md:w-80">
             <Image
               src={book.cover}
               alt={book.title}
@@ -39,19 +41,19 @@ function Page() {
               className="rounded-lg object-cover"
             />
           </div>
-          <div className="h-[80%] w-[80%] py-5 text-left">
-            <h1 className="text-3xl font-bold">{book.title}</h1>
+          <div className="h-[80%] w-full py-5 text-left md:w-[80%]">
+            <h1 className="text-xl font-bold md:text-3xl">{book.title}</h1>
             <h2 className="italic text-gray-400">{book.author}</h2>
 
-            <div className="flex justify-between gap-8">
-              <div className="w-[70%]">
+            <div className="flex flex-col justify-between gap-8 md:flex-row">
+              <div className="w-full md:w-[70%]">
                 {/* <p>{book.release_date}</p> */}
                 {/* <p>Pages: {book.pages}</p> */}
                 <p className="my-4 text-justify font-semibold text-[#75CE99]">
                   {book.dedication}
                 </p>
                 <p
-                  className={`my-4 text-base font-extralight leading-5 text-slate-300 ${cormorantGaramond.className}`}
+                  className={`my-4 text-justify text-base font-extralight leading-5 text-slate-300 md:text-left ${cormorantGaramond.className}`}
                 >
                   {book.summary}
                 </p>
@@ -60,17 +62,17 @@ function Page() {
                   <a
                     href={book.wiki}
                     target="_blank"
-                    className="flex items-center gap-2 rounded-full bg-[#92B0ED] px-4 py-2 text-gray-900"
+                    className="flex items-center gap-2 rounded-full bg-[#92B0ED] px-4 py-2 text-sm text-gray-900 md:text-base"
                   >
                     Read Wiki
-                    <div className="text-xl">
+                    <div className="text-base md:text-xl">
                       <BsGlobe />
                     </div>
                   </a>
                 </div>
               </div>
 
-              <div className="my-4 w-[30%]">
+              <div className="my-4 md:w-[30%]">
                 <div className="border-t border-gray-500 px-4 pb-8 pt-2">
                   <div className="flex items-center justify-between gap-2">
                     <div>

@@ -32,7 +32,9 @@ function BooksPage() {
   return (
     <div className={`w-full text-left ${poppins.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+        <h1
+          className={`text-xl font-bold md:text-3xl lg:text-4xl ${uncialAntiqua.className}`}
+        >
           Harry Potter Books
         </h1>
       </div>
@@ -40,7 +42,7 @@ function BooksPage() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="my-8 grid w-full grid-cols-4 gap-6">
+        <div className="grid w-full grid-cols-1 gap-0 md:my-8 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {books.map((book) => (
             <ItemCard
               key={book.index}

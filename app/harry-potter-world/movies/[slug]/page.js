@@ -39,8 +39,10 @@ function Page() {
         <Spinner />
       ) : (
         movie && (
-          <div className={`flex h-[75vh] gap-8 ${imFellEnglish.className}`}>
-            <div className={`relative h-[80%] w-72`}>
+          <div
+            className={`flex h-full flex-col gap-0 md:h-[75vh] md:flex-col md:gap-8 ${imFellEnglish.className}`}
+          >
+            <div className={`relative h-[65vh] w-full md:h-[80%] md:w-72`}>
               <Image
                 src={movie.poster}
                 alt={movie.title}
@@ -48,11 +50,11 @@ function Page() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="h-[80%] w-[80%] py-5 text-left">
+            <div className="h-[80%] w-full text-left md:w-[80%] md:py-5">
               <h1 className="text-3xl font-bold">{movie.title}</h1>
 
-              <div className="flex justify-between gap-8">
-                <div className="w-[70%]">
+              <div className="flex flex-col justify-between gap-8 md:flex-row">
+                <div className="w-full md:w-[70%]">
                   <div className={`my-4 flex gap-2 ${poppins.className}`}>
                     <p className="rounded-full bg-gray-800 px-3 py-1 text-xs font-light text-gray-400">
                       Mystrey/Thriller
@@ -100,7 +102,7 @@ function Page() {
                     </div>
                   </div> */}
                   <p
-                    className={`my-8 text-base font-extralight leading-5 text-slate-300 ${cormorantGaramond.className}`}
+                    className={`my-8 text-justify text-base font-extralight leading-5 text-slate-300 md:text-left ${cormorantGaramond.className}`}
                   >
                     {movie.summary}
                   </p>
@@ -129,7 +131,7 @@ function Page() {
                   </div>
                 </div>
 
-                <div className="my-4 w-[30%]">
+                <div className="my-4 md:w-[30%]">
                   <div className="border-t border-gray-500 px-4 pb-8 pt-2">
                     <div className="flex items-center justify-between gap-2">
                       <div>
