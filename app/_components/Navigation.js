@@ -53,9 +53,9 @@ function Navigation() {
           >
             Home
           </Link>
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <Link
-              key={category.id}
+              key={index}
               href={category.href}
               onClick={toggle}
               className="cursor-pointer border-b border-gray-500 px-12 py-4 text-center text-lg font-bold transition-all duration-200 hover:rounded-lg hover:bg-slate-900/70 hover:text-primary-100"

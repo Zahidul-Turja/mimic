@@ -20,17 +20,17 @@ function CartProducts({ products, total, discountedTotal }) {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="grid grid-cols-[auto_20%_20%_20%] text-left md:w-[70%] md:grid-cols-[80%_5%_20%_15%]">
+              <div className="grid w-[100%] grid-cols-[50%_10%_20%_20%] items-center text-left md:w-[70%] md:grid-cols-[80%_5%_20%_15%]">
                 <h3 className="text-sm font-semibold md:text-base">
                   {product.title}
                 </h3>
-                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
+                <p className="text-center text-xs font-semibold text-gray-400 md:text-sm">
                   {product.quantity} x
                 </p>
-                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
+                <p className="text-center text-xs font-semibold text-gray-400 md:text-sm">
                   ${product.price}
                 </p>
-                <p className="text-xs font-semibold text-gray-400 md:text-center md:text-sm">
+                <p className="text-right text-xs font-semibold text-gray-400 md:text-center md:text-sm">
                   ${product.total}
                 </p>
               </div>
