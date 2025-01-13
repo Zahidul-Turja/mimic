@@ -121,14 +121,14 @@ export default function Login() {
         onClick={() => setShowUsers(false)}
       >
         <div
-          className="absolute right-14 top-24 cursor-pointer rounded-full bg-primary-100 p-2 text-2xl text-primary-900 transition-opacity duration-200 hover:opacity-55"
+          className="absolute right-6 top-20 cursor-pointer rounded-full bg-primary-100 p-2 text-2xl text-primary-900 transition-opacity duration-200 hover:opacity-55 md:right-14 md:top-24"
           onClick={() => setShowUsers(false)}
         >
           <RxCross2 />
         </div>
 
         <div
-          className="mx-auto mt-28 h-[70%] w-[25%] overflow-y-scroll rounded-md bg-primary-100 px-8 py-4"
+          className="mx-auto mt-32 h-[70%] w-[90%] overflow-y-scroll rounded-md bg-primary-100 px-8 py-4 md:mt-28 md:w-[25%]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between px-2 py-4 text-base font-bold text-primary-900">
