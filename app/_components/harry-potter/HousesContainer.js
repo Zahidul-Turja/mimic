@@ -28,14 +28,14 @@ function HousesContainer() {
   }, []);
 
   return (
-    <div className="my-8 flex justify-between">
+    <div className="my-8 flex w-full flex-col justify-between gap-8 md:flex-row md:gap-0">
       {loading ? (
         <Spinner />
       ) : (
         houses.map((house) => (
           <div
             key={house.index}
-            className={`from-${house.colors[0]} to-${house.colors[1]} relative h-72 w-64 overflow-hidden rounded-lg border border-gray-500 bg-gradient-to-tr px-4 py-2`}
+            className={`from-${house.colors[0]} to-${house.colors[1]} relative mx-auto h-80 w-full overflow-hidden rounded-lg border border-gray-500 bg-gradient-to-tr px-4 py-2 md:h-72 md:w-64`}
           >
             <Image
               src={dummy[house.index].image}

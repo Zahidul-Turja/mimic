@@ -44,7 +44,9 @@ function CharacterPage() {
   return (
     <div className={`w-full text-left ${imFellEnglish.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+        <h1
+          className={`text-lg font-bold md:text-3xl lg:text-4xl ${uncialAntiqua.className}`}
+        >
           Characters
         </h1>
         {/* <Filters /> */}
@@ -55,13 +57,13 @@ function CharacterPage() {
       ) : (
         <>
           <ul className="my-6 rounded-lg border-[1.5px] border-gray-600">
-            <div className="grid grid-cols-[0.5fr_1.5fr_1fr_1fr_1fr_0.3fr] rounded-t-lg border-b border-gray-600 px-4 py-4 font-semibold uppercase">
+            <div className="grid grid-cols-[1.2fr_2fr_2fr] rounded-t-lg border-b border-gray-600 px-4 py-4 text-sm uppercase md:grid-cols-[0.5fr_1.5fr_1fr_1fr_1fr] md:text-base md:font-semibold">
               <div>Avatar</div>
               <div>Name</div>
-              <div>Nickname</div>
+              <div className="hidden md:block">Nickname</div>
               <div>Actor</div>
-              <div>House</div>
-              <div className="grid-cols-none"></div>
+              <div className="hidden md:block">House</div>
+              {/* <div className="hidden grid-cols-none"></div> */}
             </div>
 
             {displayedCharacters.map((character) => (
@@ -77,7 +79,7 @@ function CharacterPage() {
           </ul>
 
           {/* Pagination Controls */}
-          <div className="mx-auto mt-16 w-fit">
+          <div className="mx-auto mt-16 flex w-fit">
             <button
               onClick={() => setCurrentPage((prev) => prev - 1)}
               className={`mx-2 rounded border border-primary-100 bg-primary-100 p-2 font-semibold text-primary-950 ${currentPage > 1 ? "" : "cursor-not-allowed opacity-70"}`}

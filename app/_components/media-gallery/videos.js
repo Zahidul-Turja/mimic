@@ -20,7 +20,7 @@ function Videos({ videos }) {
   };
 
   return (
-    <div className="my-8 columns-2 gap-4 space-y-4 md:columns-3 lg:columns-4">
+    <div className="my-8 columns-1 gap-4 space-y-4 md:columns-3 lg:columns-4">
       {videos && videos.length > 0 ? (
         videos.map((video) => (
           <div

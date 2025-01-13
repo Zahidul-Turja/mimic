@@ -7,7 +7,7 @@ function ItemCard({ item, to, image, customStyles }) {
   return (
     <Link
       href={`${to}/${attributes.slug}`}
-      className={`group relative h-96 w-64 overflow-hidden ${customStyles}`}
+      className={`group relative h-[32rem] w-full overflow-hidden md:h-96 md:w-64 ${customStyles}`}
     >
       <div className="relative h-full w-auto">
         <Image

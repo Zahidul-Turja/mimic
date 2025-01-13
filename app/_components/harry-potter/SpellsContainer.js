@@ -31,7 +31,7 @@ function SpellsContainer() {
   }
 
   return (
-    <div className="my-8 grid w-full grid-cols-3 gap-6">
+    <div className="my-8 grid w-full grid-cols-1 gap-6 md:grid-cols-3">
       {spells.map((spell) => (
         <div
           key={spell.index}

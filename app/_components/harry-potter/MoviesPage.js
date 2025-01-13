@@ -28,7 +28,9 @@ function MoviesPage() {
   return (
     <div className={`w-full text-left ${poppins.className}`}>
       <div className="flex items-center justify-between">
-        <h1 className={`text-4xl font-bold ${uncialAntiqua.className}`}>
+        <h1
+          className={`text-lg font-bold md:text-3xl lg:text-4xl ${uncialAntiqua.className}`}
+        >
           Harry Potter Movies
         </h1>
       </div>
@@ -36,7 +38,7 @@ function MoviesPage() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="my-8 grid w-full grid-cols-4 gap-6">
+        <div className="my-8 grid w-full grid-cols-1 gap-6 md:grid-cols-4">
           {movies.map((movie) => (
             <ItemCard
               key={movie.id}
