@@ -1,18 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 
 import Spinner from "../Spinner";
 import BoundingBox from "../BoundingBox";
-import { getCurrentUser, getUserById } from "@/app/_lib/social-services";
+import {
+  getCurrentUser,
+  getUserById,
+  logout,
+} from "@/app/_lib/social-services";
 
 function UserProfile({ isCurrentUser }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const params = useParams();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -93,6 +98,15 @@ function UserProfile({ isCurrentUser }) {
           </p>
         </div>
       </div>
+      <button
+        className="my-8 rounded-lg bg-primary-200 px-8 py-3 font-bold text-primary-800"
+        onClick={() => {
+          logout();
+          router.push("/social");
+        }}
+      >
+        Log out
+      </button>
     </BoundingBox>
   );
 }

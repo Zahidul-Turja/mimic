@@ -40,7 +40,7 @@ function Page() {
       ) : (
         movie && (
           <div
-            className={`flex h-full flex-col gap-0 md:h-[75vh] md:flex-col md:gap-8 ${imFellEnglish.className}`}
+            className={`flex h-full flex-col gap-0 md:h-[75vh] md:flex-row md:gap-8 ${imFellEnglish.className}`}
           >
             <div className={`relative h-[65vh] w-full md:h-[80%] md:w-72`}>
               <Image
@@ -67,19 +67,19 @@ function Page() {
                     </p>
                   </div>
                   <div className="my-4 flex items-center gap-6">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:justify-normal">
                       <div className="rounded-full bg-gradient-to-r from-[#F5C700] to-[#F5C700] px-3 py-[3px] text-sm text-slate-900">
                         <BsCalendar2CheckFill />
                       </div>
                       <p>{movie.release_date}</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:justify-normal">
                       <p className="rounded-full bg-gradient-to-r from-[#E89A81] to-[#E89A81] px-3 py-[1px] text-sm font-light text-slate-800">
                         {movie.rating}
                       </p>
                       13(18+)
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:justify-normal">
                       <div className="rounded-full bg-gradient-to-r from-[#75CE99] to-[#75CE99] px-3 py-[3px] text-base font-extrabold text-slate-900">
                         <GiTimeTrap />
                       </div>

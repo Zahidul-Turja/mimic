@@ -59,7 +59,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="mx-auto w-full rounded-lg border border-primary-800 bg-primary-900 px-10 py-8 md:w-[60%] lg:w-[30%]">
+      <div className="mx-auto mt-6 w-full rounded-lg border border-primary-800 bg-primary-900 px-10 py-8 md:mt-0 md:w-[60%] lg:w-[30%]">
         <h2 className="pb-2 text-2xl font-bold">Login</h2>
 
         <form onSubmit={handleSubmit}>

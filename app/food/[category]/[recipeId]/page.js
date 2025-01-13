@@ -5,12 +5,7 @@ import { useParams } from "next/navigation";
 import { FaYoutube, FaBalanceScale } from "react-icons/fa";
 import { TbComponents } from "react-icons/tb";
 
-import {
-  greatVibes,
-  dancingScript,
-  pacifico,
-  raleway,
-} from "@/app/_utils/fonts/fonts";
+import { greatVibes, dancingScript, raleway } from "@/app/_utils/fonts/fonts";
 import { getMealById } from "@/app/_lib/meal-services";
 import BoundingBox from "@/app/_components/BoundingBox";
 import Image from "next/image";
@@ -50,7 +45,7 @@ function Page() {
       ) : (
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="md:w-[30%]">
-            <div className="relative h-[26rem] w-full rounded-lg border-2 border-primary-200 bg-slate-950 p-8">
+            <div className="relative h-[25rem] w-full rounded-lg border-2 border-primary-200 bg-slate-950 p-8 md:h-[26rem]">
               <Image
                 src={recipe.strMealThumb}
                 alt={recipe.strMeal}

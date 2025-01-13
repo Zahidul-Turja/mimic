@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 
 function NavBar() {
   return (
-    <div className="sticky top-0 z-50 mx-auto w-full bg-primary-900/30 py-4">
+    <div className="sticky top-0 z-30 mx-auto w-full bg-primary-900/30 py-4">
       <div className="mx-auto flex items-center justify-around md:w-[30%]">
         <Link href={"/social/feed"} className="flex items-center gap-2">
           <IoHomeOutline className="text-xl" />
