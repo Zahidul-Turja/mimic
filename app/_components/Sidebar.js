@@ -37,7 +37,7 @@ function MobileScreen({ pathname }) {
     setMenuOpen((cur) => !cur);
   }
   return (
-    <div className="fixed bottom-10 right-10 z-30 flex h-16 w-16 items-center justify-center rounded-full bg-primary-950 text-primary-50 md:hidden">
+    <div className="fixed right-4 top-[4.7rem] z-30 flex h-16 w-16 items-center justify-center rounded-full bg-primary-950 text-primary-50 md:hidden">
       <AiOutlineMenuUnfold className="text-4xl" onClick={handleToggle} />
 
       <div
