@@ -28,6 +28,21 @@ export default function Login() {
     checkLoginStatus();
   }, [router]);
 
+  const handleLoginUser = async (username, password) => {
+    try {
+      const response = await login(username, password);
+      toast.success(`Welcome Back ${response.firstName}!`, {
+        duration: 5000,
+      });
+      router.push("/social/feed");
+    } catch (err) {
+      toast.error("Login failed. Please check your credentials.", {
+        duration: 3000,
+      });
+      console.error("Error:", err);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -140,7 +155,8 @@ export default function Login() {
               allUsers.map((user) => (
                 <li
                   key={user.id}
-                  className="flex items-center justify-between border-t-2 border-primary-900 px-2 py-4 text-sm font-semibold text-primary-900"
+                  onClick={() => handleLoginUser(user.username, user.password)}
+                  className="flex cursor-pointer items-center justify-between border-t-2 border-primary-900 px-2 py-4 text-sm font-semibold text-primary-900"
                 >
                   <div className="flex flex-col text-left">
                     <span className="text-sm font-bold">{user.username}</span>
