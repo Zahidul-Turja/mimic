@@ -37,21 +37,21 @@ function MobileScreen({ pathname }) {
     setMenuOpen((cur) => !cur);
   }
   return (
-    <div className="fixed bottom-4 right-4 z-30 rounded-full bg-primary-950 text-primary-50 md:hidden">
-      <AiOutlineMenuUnfold className="text-3xl" onClick={handleToggle} />
+    <div className="fixed bottom-10 right-10 z-30 flex h-16 w-16 items-center justify-center rounded-full bg-primary-950 text-primary-50 md:hidden">
+      <AiOutlineMenuUnfold className="text-4xl" onClick={handleToggle} />
 
       <div
-        className={`fixed left-0 top-0 h-screen w-screen bg-primary-50 px-10 transition-all duration-300 ${menuOpen ? "translate-y-0" : "translate-y-full"}`}
+        className={`fixed left-0 top-0 h-screen w-screen bg-primary-50 px-20 transition-all duration-300 ${menuOpen ? "translate-y-0" : "translate-y-full"}`}
       >
         <RxCross2
           className="absolute right-8 top-24 text-3xl text-primary-950"
           onClick={handleToggle}
         />
-        <div className="flex flex-col gap-4 pt-36 text-2xl font-bold">
+        <div className="flex flex-col gap-8 pt-36 text-2xl font-semibold">
           <Link
             href={"/harry-potter-world"}
             onClick={handleToggle}
-            className="flex gap-4 border-b border-primary-900 py-4 text-primary-950"
+            className="flex justify-center gap-4 border-b border-primary-900 py-4 text-primary-950"
           >
             <HiOutlineUsers className="w-7" />
             <span>Characters</span>
@@ -59,7 +59,7 @@ function MobileScreen({ pathname }) {
           <Link
             href={"/harry-potter-world/spells"}
             onClick={handleToggle}
-            className="flex items-center gap-2 border-b border-primary-900 py-2 text-primary-950"
+            className="flex items-center justify-center gap-4 border-b border-primary-900 py-2 text-primary-950"
           >
             <GiSpellBook className="w-7" />
             <span>Magic Spells</span>
@@ -67,7 +67,7 @@ function MobileScreen({ pathname }) {
           <Link
             href={"/harry-potter-world/houses"}
             onClick={handleToggle}
-            className="flex items-center gap-2 border-b border-primary-900 py-2 text-primary-950"
+            className="flex items-center justify-center gap-4 border-b border-primary-900 py-2 text-primary-950"
           >
             <MdOutlineCastle className="w-7" />
             <span>Houses</span>
@@ -75,7 +75,7 @@ function MobileScreen({ pathname }) {
           <Link
             href={"/harry-potter-world/movies"}
             onClick={handleToggle}
-            className="flex items-center gap-2 border-b border-primary-900 py-2 text-primary-950"
+            className="flex items-center justify-center gap-4 border-b border-primary-900 py-2 text-primary-950"
           >
             <MdMovieEdit className="w-7" />
             <span>Movies</span>
@@ -83,7 +83,7 @@ function MobileScreen({ pathname }) {
           <Link
             href={"/harry-potter-world/books"}
             onClick={handleToggle}
-            className="flex items-center gap-2 border-b border-primary-900 py-2 text-primary-950"
+            className="flex items-center justify-center gap-4 border-b border-primary-900 py-2 text-primary-950"
           >
             <BsBook className="w-7" />
             <span>Books</span>
