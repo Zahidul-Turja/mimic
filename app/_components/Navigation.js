@@ -49,7 +49,7 @@ function Navigation() {
           <Link
             href={"/"}
             onClick={toggle}
-            className="cursor-pointer border-b border-gray-500 px-12 py-4 text-center text-xl font-semibold transition-all duration-200 hover:rounded-lg hover:bg-slate-900/70 hover:text-primary-100"
+            className="cursor-pointer border-b border-gray-500 px-12 py-4 text-center text-xl font-bold transition-all duration-200 hover:rounded-lg hover:bg-slate-900/70 hover:text-primary-100"
           >
             Home
           </Link>
