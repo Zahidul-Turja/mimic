@@ -2,6 +2,8 @@
 
 A multi-purpose web application built with **Next.js** to showcase diverse features and functionalities, including e-commerce, media galleries, Harry Potter content, and more. This project demonstrates my skills in modular design, dynamic routing, API integration, and responsive UI development.
 
+<img src="./public/readme/home.png">
+
 ## 🚀 Features
 
 - **E-Commerce Section**:
@@ -14,10 +16,40 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
   - Pagination
   - Add to cart functionality
 
+**Home Page**
+<img src="./public/readme/ecom-home.png"/>
+
+**Single Product**
+<img src="./public/readme/ecom-product.png"/>
+
+**Checkout page**
+<img src="./public/readme/ecom-checkout.png"/>
+
+- **Media Gallery**:
+
+  - Photo and video galleries with **masonry grid**.
+  - Filter images by category
+  - Dynamically search photos and videos with prompt
+  - Download media
+
+  <img src="./public/readme/media-gallery.png"/>
+
+- **Social Media**:
+
+  - Authentication
+  - See all posts
+  - User profile
+
+  <img src="./public/readme/social-home.png"/>
+
 - **Harry Potter World**:
 
-  - Explore books, movies, houses, and spells.
+  - Explore charecters, books, movies, houses, and spells.
   - Dynamic pages for specific content like individual books or movies.
+  - Pagination (if applicable)
+
+  <img src="/public/readme/harry-potter-books.png" />
+  <img src="/public/readme/harry-potter-single.png" />
 
 - **Meal Categories**:
 
@@ -25,13 +57,20 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
   - View detailed recipe pages.
   - Filter meal/recipe by category
 
-- **Media Gallery**:
+**Home**
+<img src="./public/readme/food-home.png" />
 
-  - Photo and video galleries with categories.
-  - Search photots and videos with prompt
+**Category**
+<img src="./public/readme/food-breakfast.png" />
+
+**Single Recipe**
+<img src="./public/readme/food-single.png" />
 
 - **Quotes Section**:
+
   - Display and explore inspiring quotes.
+
+  <img src="./public/readme/quotes.png"/>
 
 ## 🛠️ Tech Stack
 
@@ -46,118 +85,6 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
     - Characters ([Documentation](https://hp-api.onrender.com/))
     - Harry Potter Movies ([Documentation](https://api.potterdb.com/v1/movies))
     - Houses and Spells ([Documentation](https://github.com/fedeperin/potterapi?tab=readme-ov-file))
-
-<!-- ## 📂 Directory Structure
-
-```markdown
-├── Zahidul-Turja-Mimic/
-│ ├── README.md
-│ ├── jsconfig.json
-│ ├── next.config.mjs
-│ ├── package.json
-│ ├── postcss.config.mjs
-│ ├── tailwind.config.js
-│ ├── .eslintrc.json
-│ ├── .prettierrc
-│ ├── app/
-│ │ ├── layout.js
-│ │ ├── page.js
-│ │ ├── \_components/
-│ │ │ ├── BoundingBox.js
-│ │ │ ├── CategoryItem.js
-│ │ │ ├── Header.js
-│ │ │ ├── Navigation.js
-│ │ │ ├── Row.js
-│ │ │ ├── Sidebar.js
-│ │ │ ├── Spinner.js
-│ │ │ ├── ecomm/
-│ │ │ │ ├── AuthButtons.js
-│ │ │ │ ├── HeaderSection.js
-│ │ │ │ ├── Login.js
-│ │ │ │ ├── NavBar.js
-│ │ │ │ ├── NavProfileInfo.js
-│ │ │ │ ├── ProductHighlightsRow.js
-│ │ │ │ ├── ProductImages.js
-│ │ │ │ ├── ProductPage.js
-│ │ │ │ ├── ProductsList.js
-│ │ │ │ ├── Reviews.js
-│ │ │ │ └── SearchInput.js
-│ │ │ ├── harry-potter/
-│ │ │ │ ├── BooksPage.js
-│ │ │ │ ├── CharacterPage.js
-│ │ │ │ ├── Filters.js
-│ │ │ │ ├── HarryPotterLayout.js
-│ │ │ │ ├── HousePage.js
-│ │ │ │ ├── HousesContainer.js
-│ │ │ │ ├── ItemCard.js
-│ │ │ │ ├── MoviesPage.js
-│ │ │ │ ├── SpellsContainer-v1.js
-│ │ │ │ ├── SpellsContainer.js
-│ │ │ │ └── SpellsPage.js
-│ │ │ ├── meal/
-│ │ │ │ └── MealCategoryPage.js
-│ │ │ ├── media-gallery/
-│ │ │ │ ├── categories.js
-│ │ │ │ ├── gallery.js
-│ │ │ │ ├── photos.js
-│ │ │ │ └── videos.js
-│ │ │ └── quotes/
-│ │ │ └── QuotesPage.js
-│ │ ├── \_lib/
-│ │ │ ├── categories.js
-│ │ │ ├── dummy-data.js
-│ │ │ ├── ecomm-services.js
-│ │ │ ├── harry-potter-services.js
-│ │ │ ├── meal-services.js
-│ │ │ ├── pexels-api.js
-│ │ │ └── quotes-services.js
-│ │ ├── \_styles/
-│ │ │ └── globals.css
-│ │ ├── \_utils/
-│ │ │ ├── constants.js
-│ │ │ └── fonts/
-│ │ │ └── fonts.js
-│ │ ├── ecomm/
-│ │ │ ├── page.js
-│ │ │ └── products/
-│ │ │ ├── page.js
-│ │ │ └── [id]/
-│ │ │ └── page.js
-│ │ ├── food/
-│ │ │ ├── page.js
-│ │ │ └── [category]/
-│ │ │ ├── page.js
-│ │ │ └── [recipeId]/
-│ │ │ └── page.js
-│ │ ├── harry-potter-world/
-│ │ │ ├── page.js
-│ │ │ ├── books/
-│ │ │ │ ├── page.js
-│ │ │ │ └── [slug]/
-│ │ │ │ └── page.js
-│ │ │ ├── houses/
-│ │ │ │ └── page.js
-│ │ │ ├── movies/
-│ │ │ │ ├── page.js
-│ │ │ │ └── [slug]/
-│ │ │ │ └── page.js
-│ │ │ └── spells/
-│ │ │ └── page.js
-│ │ ├── media-gallery/
-│ │ │ └── page.js
-│ │ ├── movies/
-│ │ │ └── page.js
-│ │ ├── quotes/
-│ │ │ └── page.js
-│ │ └── social/
-│ │ └── page.js
-│ └── public/
-│ ├── data.js
-│ ├── avatar/
-│ │ └── vecteezy_user-profile-avatar_11209565.eps
-│ ├── ecomm/
-│ └── harry-potter-world/
-``` -->
 
 ## ⚙️ Installation and Setup
 
@@ -202,8 +129,8 @@ http://localhost:3000/
 
 ## 📈 Future Enhancements
 
-- Add authentication and user profiles.
 - Integrate a backend (e.g., Django) for real-time data and user management.
+- Add new service categories
 - Implement unit and integration tests.
 - Optimize for SEO and performance.
 
