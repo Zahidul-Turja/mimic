@@ -1,7 +1,7 @@
 import { createClient } from "pexels";
 
-const client = createClient(
-  "GwWYgMfBThjKa18JoptxKf0Dy6UouYdselNhNl3uzmyxE1u9ci44BMBA",
-);
+const SECRET_KEY = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
+
+const client = createClient(SECRET_KEY);
 
 export default client;
