@@ -43,8 +43,8 @@ function Page() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col justify-between gap-12 md:flex-row">
-          <div className="md:w-[30%]">
+        <div className="flex flex-col items-start justify-between gap-12 md:flex-row">
+          <div className="md:sticky md:top-10 md:max-h-screen md:w-[30%]">
             <div className="relative h-[25rem] w-full rounded-lg border-2 border-primary-200 bg-slate-950 p-8 md:h-[26rem]">
               <Image
                 src={recipe.strMealThumb}

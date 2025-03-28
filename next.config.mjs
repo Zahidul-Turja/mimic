@@ -11,9 +11,6 @@ const nextConfig = {
       "dummyjson.com",
     ],
   },
-  env: {
-    FAVQ_API_KEY: "648c79d3eb2f04824485fa8e114b3a12",
-  },
 };
 
 export default nextConfig;

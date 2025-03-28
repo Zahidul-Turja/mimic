@@ -1,6 +1,6 @@
 function BoundingBox({ children }) {
   return (
-    <div className="overflow-x-hidden p-4 text-center md:p-8 lg:p-12">
+    <div className="min-h-screen p-4 text-center md:p-8 lg:p-12">
       {children}
     </div>
   );
