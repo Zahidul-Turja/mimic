@@ -91,8 +91,8 @@ A multi-purpose web application built with **Next.js** to showcase diverse featu
 1. **Clone the repository**:
 
 ```
-git clone https://github.com/your-username/Zahidul-Turja-Mimic.git
-cd Zahidul-Turja-Mimic
+git clone https://github.com/Zahidul-Turja/mimic.git
+cd mimic
 ```
 
 2. **Install dependencies**:
@@ -101,13 +101,18 @@ cd Zahidul-Turja-Mimic
 npm install
 ```
 
-3. **Run the development server**:
+3. **Set up environment variables**:
+   
+   Create an `.env.local` file and add `NEXT_PUBLIC_PEXELS_API_KEY` key.
+   You can get your **Pexels** API key from here -> https://www.pexels.com/api/key/
+
+5. **Run the development server**:
 
 ```
 npm run dev
 ```
 
-4. **Open the application in your browser**:
+5. **Open the application in your browser**:
 
 ```
 http://localhost:3000/
