@@ -1,7 +1,14 @@
 import { IoMdDownload } from "react-icons/io";
+import Masonry from "react-masonry-css";
 import Spinner from "../Spinner";
 
 function Videos({ videos }) {
+  const breakpointColumns = {
+    default: 4,
+    1024: 3,
+    768: 2,
+    640: 1,
+  };
   const handleDownload = async (videoUrl, videoId) => {
     try {
       const response = await fetch(videoUrl);
@@ -20,29 +27,35 @@ function Videos({ videos }) {
   };
 
   return (
-    <div className="my-8 columns-1 gap-4 space-y-4 md:columns-3 lg:columns-4">
+    <>
       {videos && videos.length > 0 ? (
-        videos.map((video) => (
-          <div
-            key={video.id}
-            className="group relative overflow-hidden rounded-md"
-          >
-            <GalleryVideo video={video} />
-
-            <button
-              className="absolute right-5 top-5 cursor-pointer rounded-md bg-primary-100 px-2 py-1 text-base font-bold text-gray-900 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              onClick={() =>
-                handleDownload(video.video_files[0].link, video.id)
-              }
+        <Masonry
+          breakpointCols={breakpointColumns}
+          className="my-8 flex w-auto gap-4"
+          columnClassName="bg-clip-padding"
+        >
+          {videos.map((video) => (
+            <div
+              key={video.id}
+              className="group relative mb-4 overflow-hidden rounded-md"
             >
-              <IoMdDownload />
-            </button>
-          </div>
-        ))
+              <GalleryVideo video={video} />
+
+              <button
+                className="absolute right-5 top-5 cursor-pointer rounded-md bg-primary-100 px-2 py-1 text-base font-bold text-gray-900 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                onClick={() =>
+                  handleDownload(video.video_files[0].link, video.id)
+                }
+              >
+                <IoMdDownload />
+              </button>
+            </div>
+          ))}
+        </Masonry>
       ) : (
         <Spinner />
       )}
-    </div>
+    </>
   );
 }
 
@@ -57,7 +70,7 @@ function GalleryVideo({ video }) {
     const videoElement = e.currentTarget;
     videoElement.pause();
     videoElement.controls = false;
-    videoElement.currentTime = 0; // Reset the video to the start
+    videoElement.currentTime = 0;
   };
 
   return (
