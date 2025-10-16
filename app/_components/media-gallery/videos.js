@@ -1,8 +1,11 @@
 import { IoMdDownload } from "react-icons/io";
 import Masonry from "react-masonry-css";
 import Spinner from "../Spinner";
+import { useState } from "react";
+import VideoModal from "./VideoModal";
 
 function Videos({ videos }) {
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const breakpointColumns = {
     default: 4,
     1024: 3,
@@ -37,15 +40,17 @@ function Videos({ videos }) {
           {videos.map((video) => (
             <div
               key={video.id}
-              className="group relative mb-4 overflow-hidden rounded-md"
+              className="group relative mb-4 cursor-pointer overflow-hidden rounded-md"
+              onClick={() => setSelectedVideo(video)}
             >
               <GalleryVideo video={video} />
 
               <button
                 className="absolute right-5 top-5 cursor-pointer rounded-md bg-primary-100 px-2 py-1 text-base font-bold text-gray-900 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                onClick={() =>
-                  handleDownload(video.video_files[0].link, video.id)
-                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDownload(video.video_files[0].link, video.id);
+                }}
               >
                 <IoMdDownload />
               </button>
@@ -54,6 +59,13 @@ function Videos({ videos }) {
         </Masonry>
       ) : (
         <Spinner />
+      )}
+
+      {selectedVideo && (
+        <VideoModal
+          video={selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+        />
       )}
     </>
   );

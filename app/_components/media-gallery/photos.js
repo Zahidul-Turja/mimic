@@ -2,8 +2,11 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 import Spinner from "../Spinner";
 import { IoMdDownload } from "react-icons/io";
+import { useState } from "react";
+import PhotoModal from "./PhotoModal";
 
 function Photos({ photos }) {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   const breakpointColumns = {
     default: 4,
     1024: 3,
@@ -38,7 +41,8 @@ function Photos({ photos }) {
           {photos.map((photo) => (
             <div
               key={photo.id}
-              className="group relative mb-4 overflow-hidden rounded-md"
+              className="group relative mb-4 cursor-pointer overflow-hidden rounded-md"
+              onClick={() => setSelectedPhoto(photo)}
             >
               <GalleryImage photo={photo} />
 
@@ -53,13 +57,11 @@ function Photos({ photos }) {
               </div>
               <button
                 className="absolute right-5 top-[-50px] cursor-pointer rounded-md bg-primary-100 px-2 py-1 text-right text-base font-bold text-gray-900 transition-all duration-500 group-hover:top-5"
-                onClick={() => handleDownload(photo.src.original, photo.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDownload(photo.src.original, photo.id);
+                }}
               >
-                <a
-                  href={photo.src.original}
-                  download={true}
-                  className="hidden"
-                ></a>
                 <IoMdDownload />
               </button>
             </div>
@@ -67,6 +69,13 @@ function Photos({ photos }) {
         </Masonry>
       ) : (
         <Spinner />
+      )}
+
+      {selectedPhoto && (
+        <PhotoModal
+          photo={selectedPhoto}
+          onClose={() => setSelectedPhoto(null)}
+        />
       )}
     </>
   );
