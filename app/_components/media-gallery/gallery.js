@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { IoIosSearch } from "react-icons/io";
 
 import client from "@/app/_lib/pexels-api";
@@ -16,9 +16,11 @@ function Gallery() {
   const [nextPage, setNextPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
   const [type, setType] = useState("photos");
+  const [hasMore, setHasMore] = useState(true);
+
+  const observerTarget = useRef(null);
 
   useEffect(() => {
     const fetchMedia = async () => {
@@ -29,7 +31,8 @@ function Gallery() {
             per_page: 20,
           });
           setPhotos(response.photos);
-          setNextPage((prev) => prev + 1);
+          setNextPage(2);
+          setHasMore(response.photos.length > 0);
         }
         if (type === "videos") {
           const response = await client.videos.popular({
@@ -37,7 +40,8 @@ function Gallery() {
             per_page: 20,
           });
           setVideos(response.videos);
-          setNextPage((prev) => prev + 1);
+          setNextPage(2);
+          setHasMore(response.videos.length > 0);
         }
       } catch (err) {
         setError(err.message);
@@ -47,9 +51,78 @@ function Gallery() {
     };
 
     fetchMedia();
-    setNextPage(1);
     setSearchText("");
   }, [type]);
+
+  const loadMore = useCallback(async () => {
+    if (loading || !hasMore) return;
+
+    try {
+      setLoading(true);
+      if (type === "photos") {
+        if (!searchText) {
+          const response = await client.photos.curated({
+            page: nextPage,
+            per_page: 20,
+          });
+          setPhotos((prev) => [...prev, ...response.photos]);
+          setHasMore(response.photos.length > 0);
+        } else {
+          const response = await client.photos.search({
+            query: searchText.trim(),
+            page: nextPage,
+            per_page: 20,
+          });
+          setPhotos((prev) => [...prev, ...response.photos]);
+          setHasMore(response.photos.length > 0);
+        }
+      } else if (type === "videos") {
+        if (!searchText) {
+          const response = await client.videos.popular({
+            page: nextPage,
+            per_page: 20,
+          });
+          setVideos((prev) => [...prev, ...response.videos]);
+          setHasMore(response.videos.length > 0);
+        } else {
+          const response = await client.videos.search({
+            query: searchText.trim(),
+            page: nextPage,
+            per_page: 20,
+          });
+          setVideos((prev) => [...prev, ...response.videos]);
+          setHasMore(response.videos.length > 0);
+        }
+      }
+      setNextPage((prev) => prev + 1);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [loading, hasMore, type, searchText, nextPage]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !loading) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const currentTarget = observerTarget.current;
+    if (currentTarget) {
+      observer.observe(currentTarget);
+    }
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, [loadMore, hasMore, loading]);
 
   const handleSearchInput = (e) => {
     setSearchText(e.target.value);
@@ -71,6 +144,8 @@ function Gallery() {
         per_page: 20,
       });
       setPhotos(response.photos);
+      setNextPage(2);
+      setHasMore(response.photos.length > 0);
     }
 
     if (type === "videos") {
@@ -81,51 +156,11 @@ function Gallery() {
         per_page: 20,
       });
       setVideos(response.videos);
+      setNextPage(2);
+      setHasMore(response.videos.length > 0);
     }
 
     setLoading(false);
-  };
-
-  const handleLoadMore = async () => {
-    try {
-      setLoading(true);
-      if (type === "photos") {
-        if (!searchText) {
-          const response = await client.photos.curated({
-            page: nextPage,
-            per_page: 20,
-          });
-          setPhotos([...photos, ...response.photos]);
-        } else {
-          const response = await client.photos.search({
-            query: searchText.trim(),
-            page: nextPage,
-            per_page: 20,
-          });
-          setPhotos([...photos, ...response.photos]);
-        }
-      } else if (type === "videos") {
-        if (!searchText) {
-          const response = await client.videos.popular({
-            page: nextPage,
-            per_page: 20,
-          });
-          setVideos([...videos, ...response.videos]);
-        } else {
-          const response = await client.videos.search({
-            query: searchText.trim(),
-            page: nextPage,
-            per_page: 20,
-          });
-          setVideos([...videos, ...response.videos]);
-        }
-      }
-      setNextPage((prev) => prev + 1);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -169,7 +204,6 @@ function Gallery() {
         </p>
       )}
 
-      {loading && <Spinner />}
       {error && <p className="text-red-500">Error: {error}</p>}
       {type === "photos" && photos && photos.length > 0 && (
         <Photos photos={photos} />
@@ -178,14 +212,13 @@ function Gallery() {
         <Videos videos={videos} />
       )}
 
-      {!loading && (
-        <button
-          className="my-4 w-full rounded-md border-2 border-gray-200/70 py-3 text-lg tracking-widest text-gray-200/80"
-          onClick={handleLoadMore}
-        >
-          Load More
-        </button>
-      )}
+      {/* Infinite scroll trigger */}
+      <div ref={observerTarget} className="py-8">
+        {loading && <Spinner />}
+        {!loading && !hasMore && (
+          <p className="text-center text-gray-400">No more items to load</p>
+        )}
+      </div>
     </>
   );
 }
